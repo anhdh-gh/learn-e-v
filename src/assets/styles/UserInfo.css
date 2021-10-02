@@ -1,0 +1,36 @@
+.user-info-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.user-info-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.user-info-container > .avata {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-info-container > .text-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.user-info-container > .text-user-info > .display-name {
+    font-size: 16px;
+    color: #292929;
+    font-weight: 600;
+    margin: 0;    
+}
+
+.user-info-container > .text-user-info > .display-name > .email {
+    color: #555;
+    font-size: 14px;
+}
