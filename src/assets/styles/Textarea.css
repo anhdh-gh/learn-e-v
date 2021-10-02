@@ -1,0 +1,56 @@
+.textarea-container {
+    cursor: pointer;
+}
+
+.textarea-container > .textarea-label {
+    width: 100%;
+    cursor: pointer;
+    color: #939bb4;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: .0625rem;
+    line-height: 1.333333333333333;
+    user-select: none;
+}
+
+.textarea-container > .textarea-input {
+    margin-top: 5px;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    border: none;
+    font-size: 1.125rem;
+    line-height: 1.444444444444444;
+    font-weight: 400;
+}
+
+.textarea-container > .textarea-input::placeholder {
+    color: #CCC;
+}
+
+.textarea-container > .textarea-underline {
+    border-bottom: 0.18rem solid #303545;
+    transition: all .12s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+
+.textarea-container > .textarea-input:focus {
+    outline: none;
+}
+
+.textarea-container > .textarea-input:focus + .textarea-underline {
+    border-bottom-color: #ffcd1f;
+}
+
+.textarea-container > .error {
+    margin-top: 10px;
+    color: #ff725b;
+    font-weight: 600;
+    letter-spacing: .0625rem;
+    line-height: 1.333333333333333;
+    user-select: none;
+    font-size: 0.8rem;
+}
+
+.underline-textarea-error {
+    border-bottom-color: #ff725b !important;
+}

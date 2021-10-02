@@ -3,12 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autosize": "^5.0.1",
+    "bootstrap": "5.1.1",
+    "firebase": "8.0.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-rc.0",
     "react-dom": "^17.0.2",
+    "react-firebase-hooks": "^3.0.4",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-toastify": "^8.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

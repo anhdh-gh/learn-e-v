@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
+
+.pageNotFound-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Merriweather", serif;
+  background: #C33764;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+
+.pageNotFound-container .title {
+  color: #fff;
+  font-size: 130px;
+  margin-top: 40px;
+}
+
+.pageNotFound-container p {
+  font-size: 22px;
+  color: #fff;
+  margin: 22px 0;
+}
+
+.pageNotFound-container a {
+  padding: 10px 30px;
+  border: 0px;
+  background: #880000;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s all;
+  font-family: "Merriweather", serif;
+  text-decoration: none;
+}
+
+.pageNotFound-container a:hover {
+  background: #660000;
+  text-decoration: none;
+}
+
+.pageNotFound-container a:active {
+  transform: translate(-5px, 5px);
+}
