@@ -1,3 +1,21 @@
-.study-set-page-container {
-    
+.study-set-page-container > .navigation {
+    padding: 24px 0;
+}
+
+.study-set-page-container > .navigation .user-info-container > .avata {
+    width: 64px;
+    height: 64px;
+}
+
+.study-set-page-container > .navigation .user-info-container > .text-user-info {
+    white-space: nowrap;
+}
+
+.study-set-page-container > .navigation .user-info-container > .text-user-info > .display-name {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.study-set-page-container > .studysets {
+    background-color: #f6f7fb;
 }

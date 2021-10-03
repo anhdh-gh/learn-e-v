@@ -3,13 +3,25 @@ import { auth } from '../config/firebase'
 
 const UserInfo = (props) => {
 
-    const { className } = props
+    const { trim } = props
 
-    return <div className={`user-info-container ${className}`}>
+    return <div className="user-info-container">
         <img src={auth.currentUser?.photoURL} alt='' className="avata"/>
         <div className="text-user-info">
-            <p className="display-name">{auth.currentUser?.displayName}</p>
-            <p className="email" >{auth.currentUser?.email}</p>
+            <p className="display-name">
+                {
+                    trim && auth.currentUser?.displayName.length > 15
+                    ? auth.currentUser?.displayName.substr(0, 15).concat('...')
+                    : auth.currentUser?.displayName
+                }
+            </p>
+            <p className="email">
+                {
+                    trim && auth.currentUser?.email.length > 15
+                    ? auth.currentUser?.email.substr(0, 15).concat('...')
+                    : auth.currentUser?.email
+                }
+            </p>
         </div>
     </div>
 }

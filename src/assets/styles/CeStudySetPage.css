@@ -1,0 +1,54 @@
+.CEstudySetPage-container .infomation {
+    padding: 24px 0;
+    justify-content: space-between
+}
+
+.CEstudySetPage-container .infomation > .title {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.CEstudySetPage-container .wordCarts {
+    background-color: #f6f7fb;
+}
+.CEstudySetPage-container .wordCarts .wordCart-input {
+    border-radius: .5rem;
+    cursor: move;
+    position: relative;
+    background-color: #FFF;
+    transition: all .12s ease;
+}
+
+.CEstudySetPage-container .wordCarts .wordCart-input > .header {
+    display: flex;
+    justify-content: space-between;
+    padding: .75rem;
+    border-bottom: 2px solid #f6f7fb;
+    transition: all .12s ease;
+}
+
+.CEstudySetPage-container .wordCarts .wordCart-input > .header .drag-icon {
+    color: #CCC;
+    padding: 0 2.5625rem;
+}   
+
+.CEstudySetPage-container .wordCarts .wordCart-input > .header .index {
+    color: #939bb4;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .0875rem;
+    line-height: 1.5;
+}
+
+.CEstudySetPage-container .wordCarts .wordCart-input > .header .delete-icon {
+    cursor: pointer;
+}
+
+.CEstudySetPage-container .wordCarts .wordCart-input > .header .drag-icon:hover {
+    color: #FFCD1F;
+}
+
+.CEstudySetPage-container .wordCarts .wordCart-input .input-type {
+    padding: 2rem .75rem;
+    cursor: initial;
+}

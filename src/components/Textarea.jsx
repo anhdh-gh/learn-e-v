@@ -1,10 +1,9 @@
 import '../assets/styles/Textarea.css'
 import autosize from "autosize"
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
 
 const Textarea = (props) => {
-    const { title, value, placeholder, maxLength, enter, onChange } = props
-    const [ error, setError ] = useState(props.error)
+    const { title, value, placeholder, maxLength, enter, onChange, error } = props
     const texareaRef = useRef(null)
 
     useEffect(() => {
@@ -14,11 +13,6 @@ const Textarea = (props) => {
     const handleKeyPress = e => {
         if(enter === false && e.key === 'Enter')
             e.preventDefault()
-    }
-
-    const handeOnChange = e => {
-        setError('')
-        onChange(e)
     }
 
     return <div className="textarea-container" onClick={() => texareaRef.current.focus()}>
@@ -31,7 +25,7 @@ const Textarea = (props) => {
             rows={1}
             maxLength={maxLength}
             onKeyPress={handleKeyPress}
-            onChange={handeOnChange}
+            onChange={onChange}
         />
         <div className={`textarea-underline ${error ? 'underline-textarea-error' : ''}`}/>
         {error && <div className="error">{error}</div>}

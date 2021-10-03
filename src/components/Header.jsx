@@ -1,5 +1,5 @@
 import '../assets/styles/Header.css'
-import { Navbar, Container, Nav, NavDropdown, Placeholder } from 'react-bootstrap'
+import { Navbar, Container, Nav, NavDropdown, Placeholder, Badge } from 'react-bootstrap'
 import { NavLink } from "react-router-dom"
 import _ from 'lodash'
 import { ROUTER_PATH } from '../constants'
@@ -34,12 +34,24 @@ const Header = (props) => {
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="my-2 my-sm-0">
-                        <Nav.Link href={ROUTER_PATH.HOME} as="span" active={pathname === ROUTER_PATH.HOME ? true : false}>
-                            <NavLink to={ROUTER_PATH.HOME}>Home</NavLink>
+                        <Nav.Link href={ROUTER_PATH.HOME} as="span">
+                            <NavLink to={ROUTER_PATH.HOME}>
+                                {
+                                    pathname === ROUTER_PATH.HOME
+                                    ? <Badge pill bg="primary">Home</Badge>
+                                    : 'Home'
+                                }
+                            </NavLink>
                         </Nav.Link>
 
-                        <Nav.Link href={ROUTER_PATH.STUDY_SET} as="span" active={pathname === ROUTER_PATH.STUDY_SET ? true : false}>
-                            <NavLink to={ROUTER_PATH.STUDY_SET}>Study set</NavLink>
+                        <Nav.Link href={ROUTER_PATH.STUDY_SET} as="span">
+                            <NavLink to={ROUTER_PATH.STUDY_SET}>
+                                {
+                                    pathname === ROUTER_PATH.STUDY_SET
+                                    ? <Badge pill bg="primary">Study set</Badge>
+                                    : 'Study set'
+                                }
+                            </NavLink>
                         </Nav.Link>
                     </Nav>
 
@@ -57,10 +69,16 @@ const Header = (props) => {
                                 title={
                                     <span className="header-user-title">
                                         <img src={user.photoURL} alt='' className="d-sm-block d-none me-2" />
-                                        <span>{user.given_name}</span>
+                                        <span>
+                                            {
+                                                user.given_name.length > 15
+                                                ? user.given_name.substr(0, 15).concat('...')
+                                                : user.given_name
+                                            }
+                                        </span>
                                     </span>
                                 }>
-                                <NavDropdown.Item disabled><UserInfo/></NavDropdown.Item>
+                                <NavDropdown.Item disabled><UserInfo trim={true}/></NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item><SignOut/></NavDropdown.Item>
                             </NavDropdown>

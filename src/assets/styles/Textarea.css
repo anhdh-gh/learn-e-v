@@ -29,7 +29,7 @@
 }
 
 .textarea-container > .textarea-underline {
-    border-bottom: 0.18rem solid #303545;
+    border-bottom: 0.1rem solid #303545;
     transition: all .12s cubic-bezier(0.47, 0, 0.75, 0.72);
 }
 

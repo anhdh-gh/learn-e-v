@@ -5,6 +5,9 @@ import Textarea from './Textarea'
 import UserInfo from './UserInfo'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
+import SearchBox from './SearchBox'
+import CardStudySet from './CardStudySet'
+import ModalConfirm from './ModalConfirm'
 
 export {
     Header,
@@ -14,4 +17,7 @@ export {
     UserInfo,
     SignIn,
     SignOut,
+    SearchBox,
+    CardStudySet,
+    ModalConfirm,
 }
