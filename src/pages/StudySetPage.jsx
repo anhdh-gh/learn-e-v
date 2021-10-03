@@ -48,12 +48,12 @@ const StudySetPage = (props) => {
                     {
                         studyset.map((item, index) => 
                             <div className="col-md-6 col-lg-4 mb-3" key={item.id}>
-                                    <CardStudySet
-                                        title={item.title}
-                                        subtitle={`Terms: ${item.wordCarts.length}`}
-                                        text={item.description}
-                                        handleRemove={() => setShowModalRemove(true)}
-                                    />
+                                <CardStudySet
+                                    title={item.title}
+                                    subtitle={`Terms: ${item.wordCarts.length}`}
+                                    text={item.description}
+                                    handleRemove={() => setShowModalRemove(true)}
+                                />
                             </div>                            
                         )
                     }
@@ -72,7 +72,6 @@ const StudySetPage = (props) => {
                 handleYes={() => setShowModalRemove(false)}
             />
         </div>      
-
         <Footer/>  
     </>
 }
