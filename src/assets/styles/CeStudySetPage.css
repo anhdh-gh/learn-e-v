@@ -6,6 +6,7 @@
 .CEstudySetPage-container .infomation > .title {
     font-weight: 700;
     font-size: 1.25rem;
+    margin: 0;
 }
 
 .CEstudySetPage-container .wordCarts {

@@ -1,4 +1,4 @@
-import firebase, { auth, userDB } from '../config/firebase'
+import firebase, { auth, userDB, studySetDB } from '../config/firebase'
 import { Utils } from './index.js'
 
 const Firebase = {
@@ -18,6 +18,16 @@ const Firebase = {
     signOut: async () => {
         try {
             await auth.signOut()
+            return true
+        }
+        catch (error) {
+            return false
+        }
+    },
+
+    addStudySet: (studyset) => {
+        try {
+            studySetDB.child(auth.currentUser.uid).push(studyset)
             return true
         }
         catch (error) {

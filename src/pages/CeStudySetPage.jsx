@@ -1,15 +1,17 @@
 import '../assets/styles/CEstudySetPage.css'
-import { Header, Textarea } from '../components'
-// import { useParams } from "react-router-dom"
+import { Header, Textarea, Footer } from '../components'
 import { Button, OverlayTrigger, Tooltip, Badge } from 'react-bootstrap'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { useState } from "react"
 import _ from "lodash"
 import { v4 as uuidv4 } from "uuid"
+import { Notify, Firebase } from "../utils"
+import { useHistory } from "react-router-dom"
+import { ROUTER_PATH } from '../constants'
 
 const CEstudySetPage = (props) => {
     // const { slug } = useParams()
-    // const [ redirect, setRedirect ] = useState(false)
+    const history = useHistory()
 
     const [ studyset, setStudyset ] = useState({
         title: {
@@ -81,9 +83,23 @@ const CEstudySetPage = (props) => {
         return res
     }
 
+    const cleanStudyset = studyset => {
+        return {
+            title: studyset.title.value,
+            description: studyset.description.value,
+            wordCarts: studyset.wordCarts.map(item => ({key: item.key, value: item.value}))
+        }
+    }
+
     const handlesubmit = () => {
         if(validate()) {
-
+            const studysetDb = cleanStudyset(studyset)
+            const res = Firebase.addStudySet(studysetDb)
+            if(res) {
+                Notify.success('Create success!')
+                history.replace(ROUTER_PATH.STUDY_SET)
+            }
+            else Notify.error('Error, try again!')
         }
     }
 
@@ -140,7 +156,7 @@ const CEstudySetPage = (props) => {
                 </div>
             </div>
 
-            <div className="wordCarts pt-4">
+            <div className="wordCarts py-4">
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="droppable">
                         {(provided, snapshot) => 
@@ -199,7 +215,7 @@ const CEstudySetPage = (props) => {
                     </Droppable>
                 </DragDropContext>
 
-                <div className="container-xl d-flex">
+                <div className="d-flex">
                     <Button
                         variant="success"
                         className="fw-bold d-block d-sm-inline-block mx-auto"
@@ -213,6 +229,8 @@ const CEstudySetPage = (props) => {
                 </div>
             </div>
         </div>
+
+        <Footer/>
     </>
 }
 

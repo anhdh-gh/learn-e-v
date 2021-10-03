@@ -8,6 +8,11 @@ const Utils = {
         return obj
     },
 
+    convertDataSnapshotToArray: object => {
+        const obj = Utils.convertDataSnapshotToObject(object)
+        return Object.keys(obj).map(key => ({id: key, ...obj[key]}))
+    },
+
     filterUserObject: userObject => {
         const {
             displayName,

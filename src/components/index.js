@@ -8,6 +8,7 @@ import SignOut from './SignOut'
 import SearchBox from './SearchBox'
 import CardStudySet from './CardStudySet'
 import ModalConfirm from './ModalConfirm'
+import Footer from './Footer'
 
 export {
     Header,
@@ -20,4 +21,5 @@ export {
     SearchBox,
     CardStudySet,
     ModalConfirm,
+    Footer,
 }

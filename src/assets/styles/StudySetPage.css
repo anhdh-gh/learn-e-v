@@ -1,3 +1,7 @@
+.study-set-page-container {
+    padding-top: 60px;
+}
+
 .study-set-page-container > .navigation {
     padding: 24px 0;
 }
@@ -18,4 +22,5 @@
 
 .study-set-page-container > .studysets {
     background-color: #f6f7fb;
+    min-height: 100vh;
 }
