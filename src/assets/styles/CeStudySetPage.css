@@ -16,7 +16,6 @@
     cursor: move;
     position: relative;
     background-color: #FFF;
-    transition: all .12s ease;
 }
 
 .CEstudySetPage-container .wordCarts .wordCart-input > .header {
@@ -24,7 +23,6 @@
     justify-content: space-between;
     padding: .75rem;
     border-bottom: 2px solid #f6f7fb;
-    transition: all .12s ease;
 }
 
 .CEstudySetPage-container .wordCarts .wordCart-input > .header .drag-icon {

@@ -140,56 +140,55 @@ const CEstudySetPage = (props) => {
                 </div>
             </div>
 
-            <div className="wordCarts pt-2">
+            <div className="wordCarts pt-4">
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="droppable">
                         {(provided, snapshot) => 
-                            <div {...provided.droppableProps} ref={provided.innerRef}>
+                            <div className="container-xl" {...provided.droppableProps} ref={provided.innerRef}>
                             {
                                 studyset.wordCarts.map((item, index) =>
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
-                                         {(provided, snapshot) =>
-                                            <div className="container-xl mt-3" key={item.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                <div className="wordCart-input">
-                                                    <div className="header">
-                                                        <span className="index">{index+1}</span>
-                                                        <span className="ms-auto drag-icon"><i className="fas fa-grip-lines"/></span>
+                                        {(provided, snapshot) =>
+                                            <div className="wordCart-input mb-4" key={item.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={{...provided.draggableProps.style}}>
+                                                <div className="header">
+                                                    <span className="index">{index+1}</span>
+                                                    <span className="ms-auto drag-icon"><i className="fas fa-grip-lines"/></span>
 
-                                                        <OverlayTrigger placement="left" overlay={<Tooltip>Remove</Tooltip>}>
-                                                            <Badge
-                                                                bg="danger" className="delete-icon"
-                                                                onClick={e => setStudyset({
-                                                                    ...studyset,
-                                                                    wordCarts: [...studyset.wordCarts.filter((item, i) => studyset.wordCarts.length > 2 ? i !== index : true)]})}
-                                                            ><i className="fas fa-trash-alt fs-6"/></Badge>      
-                                                        </OverlayTrigger>
+                                                    <OverlayTrigger placement="left" overlay={<Tooltip>Remove</Tooltip>}>
+                                                        <Badge
+                                                            bg="danger" className="delete-icon"
+                                                            onClick={e => setStudyset({
+                                                                ...studyset,
+                                                                wordCarts: [...studyset.wordCarts.filter((item, i) => studyset.wordCarts.length > 2 ? i !== index : true)]})}
+                                                        ><i className="fas fa-trash-alt fs-6"/></Badge>      
+                                                    </OverlayTrigger>
+                                                </div>
+
+                                                <div className="row input-type">
+                                                    <div className="col-md-6">
+                                                        <Textarea
+                                                            enter="true"
+                                                            title="TERM"
+                                                            placeholder='Enter term'
+                                                            value={item.key}
+                                                            error={item.errorkey}
+                                                            onChange={e => handleWordCartChange(index, e.target.value, 'key')}
+                                                        />
                                                     </div>
 
-                                                    <div className="row input-type">
-                                                        <div className="col-md-6">
-                                                            <Textarea
-                                                                enter="true"
-                                                                title="TERM"
-                                                                placeholder='Enter term'
-                                                                value={item.key}
-                                                                error={item.errorkey}
-                                                                onChange={e => handleWordCartChange(index, e.target.value, 'key')}
-                                                            />
-                                                        </div>
+                                                    <div className="col-md-6 mt-5 mt-md-0">
+                                                        <Textarea
+                                                            enter="true"
+                                                            title="DEFINITION"
+                                                            placeholder='Enter definition'
+                                                            value={item.value}
+                                                            error={item.errorvalue}
+                                                            onChange={e => handleWordCartChange(index, e.target.value, 'value')}
+                                                        />
+                                                    </div>                            
+                                                </div>   
 
-                                                        <div className="col-md-6 mt-5 mt-md-0">
-                                                            <Textarea
-                                                                enter="true"
-                                                                title="DEFINITION"
-                                                                placeholder='Enter definition'
-                                                                value={item.value}
-                                                                error={item.errorvalue}
-                                                                onChange={e => handleWordCartChange(index, e.target.value, 'value')}
-                                                            />
-                                                        </div>                            
-                                                    </div>                                    
-                                                </div>
-                                            </div>                                           
+                                            </div>
                                         }
                                     </Draggable>                     
                                 )
@@ -197,14 +196,13 @@ const CEstudySetPage = (props) => {
                             {provided.placeholder}
                             </div>
                         }
-
                     </Droppable>
                 </DragDropContext>
 
                 <div className="container-xl d-flex">
                     <Button
                         variant="success"
-                        className="fw-bold mt-3 d-block d-sm-inline-block mx-auto"
+                        className="fw-bold d-block d-sm-inline-block mx-auto"
                         onClick={e => setStudyset({
                             ...studyset,
                             wordCarts: [...studyset.wordCarts, {id: uuidv4(), key: '', value: ''}]
