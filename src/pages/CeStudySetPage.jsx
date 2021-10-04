@@ -1,4 +1,4 @@
-import '../assets/styles/CEstudySetPage.css'
+import '../assets/styles/CeStudySetPage.css'
 import { Header, Textarea, Footer } from '../components'
 import { Button, OverlayTrigger, Tooltip, Badge } from 'react-bootstrap'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
@@ -9,7 +9,7 @@ import { Notify, Firebase } from "../utils"
 import { useHistory } from "react-router-dom"
 import { ROUTER_PATH } from '../constants'
 
-const CEstudySetPage = (props) => {
+const CeStudySetPage = (props) => {
     // const { slug } = useParams()
     const history = useHistory()
 
@@ -117,7 +117,7 @@ const CEstudySetPage = (props) => {
 
     return <>
         <Header/>
-        <div className="CEstudySetPage-container">
+        <div className="CeStudySetPage-container">
 
             <div className="container-xl">
                 <div className="infomation d-sm-flex">
@@ -234,4 +234,4 @@ const CEstudySetPage = (props) => {
     </>
 }
 
-export default CEstudySetPage
+export default CeStudySetPage
