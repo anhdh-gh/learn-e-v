@@ -130,7 +130,7 @@ const CeStudySetPage = (props) => {
                 <div className="row">
                     <div className="col col-md-6">
                         <Textarea
-                            enter="false"
+                            enter={false}
                             title="TITLE"
                             placeholder='Enter a title, like "Animals"'
                             value={studyset.title.value}
@@ -144,7 +144,7 @@ const CeStudySetPage = (props) => {
                 <div className="row my-4">
                     <div className="col col-md-6">
                         <Textarea
-                            enter="false"
+                            enter={false}
                             title="DESCRIPTION"
                             placeholder='Add a description'
                             value={studyset.description.value}
