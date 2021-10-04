@@ -68,12 +68,12 @@ const Header = (props) => {
                             <NavDropdown active="active" id="navbarScrollingDropdown" align="end" className="header-user-dropList"
                                 title={
                                     <span className="header-user-title">
-                                        <img src={user.photoURL} alt='' className="d-sm-block d-none me-2" />
+                                        <img src={user?.photoURL} alt='' className="d-sm-block d-none me-2" />
                                         <span>
                                             {
-                                                user.given_name.length > 15
-                                                ? user.given_name.substr(0, 15).concat('...')
-                                                : user.given_name
+                                                user?.given_name.length > 15
+                                                ? user?.given_name.substr(0, 15).concat('...')
+                                                : user?.given_name
                                             }
                                         </span>
                                     </span>
