@@ -5,7 +5,7 @@ const Firebase = {
     signInGoogle: async () => {
         try {
             const provider = new firebase.auth.GoogleAuthProvider()
-            const res = await auth.signInWithRedirect(provider)
+            const res = await auth.signInWithPopup(provider)
             const user = Utils.filterUserObject({ ...res.user, ...res.additionalUserInfo, ...res.additionalUserInfo.profile})
             userDB.child(user?.uid).set(user)   
             return true         

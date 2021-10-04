@@ -13,7 +13,7 @@ const Utils = {
         return Object.keys(obj).map(key => ({id: key, ...obj[key]}))
     },
 
-    filterUserObject: userObject => {
+    filterUserObject: (userObject) => {
         const {
             displayName,
             email,
@@ -28,7 +28,8 @@ const Utils = {
             verified_email,
             isAnonymous
         } = userObject
-        return {
+
+        const obj = {
             displayName,
             email,
             emailVerified,
@@ -42,6 +43,10 @@ const Utils = {
             verified_email,
             isAnonymous
         }
+
+        Object.keys(obj).forEach(key => obj[key] === undefined ? delete obj[key] : {})
+
+        return obj
     }
 }
 
