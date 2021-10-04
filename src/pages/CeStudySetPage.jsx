@@ -85,9 +85,9 @@ const CeStudySetPage = (props) => {
 
     const cleanStudyset = studyset => {
         return {
-            title: studyset.title.value,
-            description: studyset.description.value,
-            wordCarts: studyset.wordCarts.map(item => ({key: item.key, value: item.value}))
+            title: studyset.title.value.trim(),
+            description: studyset.description.value.trim(),
+            wordCarts: studyset.wordCarts.map(item => ({key: item.key.trim(), value: item.value.trim()}))
         }
     }
 
