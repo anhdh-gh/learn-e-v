@@ -33,6 +33,16 @@ const Firebase = {
         catch (error) {
             return false
         }
+    },
+
+    removeStudySet: id => {
+        try {
+            studySetDB.child(auth.currentUser.uid).child(id).remove()
+            return true
+        }
+        catch (error) {
+            return false
+        }
     }
 }
 

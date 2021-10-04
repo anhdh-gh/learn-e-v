@@ -6,11 +6,12 @@ import { ROUTER_PATH } from '../constants'
 import { NavLink } from "react-router-dom"
 import { useList } from 'react-firebase-hooks/database'
 import { auth, studySetDB } from '../config/firebase'
-import { Utils } from '../utils'
+import { Utils, Notify, Firebase } from '../utils'
 
 const StudySetPage = (props) => {
 
     const [ showModalRemove , setShowModalRemove ] = useState(false)
+    const [ itemRE, setItemRE ] = useState({id: '', title: ''})
 
     const [ studySetDataSnapshot, loading ] = useList(
         auth.currentUser ? 
@@ -19,6 +20,13 @@ const StudySetPage = (props) => {
     )
 
     const studyset = Utils.convertDataSnapshotToArray(studySetDataSnapshot)
+
+    const handleRemove = ()=> {
+        const res = Firebase.removeStudySet(itemRE.id)
+        if(res) Notify.success('Successful removal!')
+        else Notify.error('Error, try again!')
+        setShowModalRemove(false)
+    }   
 
     return <>
         <Header hideUnder={true}/>
@@ -55,7 +63,10 @@ const StudySetPage = (props) => {
                                         title={item.title}
                                         subtitle={`Terms: ${item.wordCarts.length}`}
                                         text={item.description}
-                                        handleRemove={() => setShowModalRemove(true)}
+                                        handleRemove={() => {
+                                            setItemRE({id: item.id, title: item.title})
+                                            setShowModalRemove(true)
+                                        }}
                                     />
                                 }
 
@@ -72,9 +83,9 @@ const StudySetPage = (props) => {
                 show={showModalRemove}
                 setShow={setShowModalRemove}
                 title="Confirm"
-                message="Are you sure you want to delete this study set?"
+                message={`Are you sure you want to delete study set "${itemRE.title}"?`}
                 handleNo={() => setShowModalRemove(false)}
-                handleYes={() => setShowModalRemove(false)}
+                handleYes={handleRemove}
             />
         </div>      
         <Footer/>  
