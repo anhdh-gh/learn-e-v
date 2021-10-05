@@ -38,6 +38,13 @@ const CeStudySetPage = (props) => {
                 value: '',
                 errorkey: '',
                 errorvalue: ''
+            },
+            {
+                id: uuidv4(),
+                key: '',
+                value: '',
+                errorkey: '',
+                errorvalue: ''
             }
         ]
     })
@@ -175,7 +182,7 @@ const CeStudySetPage = (props) => {
                                                             bg="danger" className="delete-icon"
                                                             onClick={e => setStudyset({
                                                                 ...studyset,
-                                                                wordCarts: [...studyset.wordCarts.filter((item, i) => studyset.wordCarts.length > 2 ? i !== index : true)]})}
+                                                                wordCarts: [...studyset.wordCarts.filter((item, i) => studyset.wordCarts.length > 3 ? i !== index : true)]})}
                                                         ><i className="fas fa-trash-alt fs-6"/></Badge>      
                                                     </OverlayTrigger>
                                                 </div>
