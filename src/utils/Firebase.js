@@ -43,6 +43,16 @@ const Firebase = {
         catch (error) {
             return false
         }
+    },
+
+    updateStudySet: (id, studyset) => {
+        try {
+            studySetDB.child(auth.currentUser.uid).child(id).update(studyset)
+            return true
+        }
+        catch (error) {
+            return false
+        }
     }
 }
 

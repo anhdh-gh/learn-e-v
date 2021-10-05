@@ -80,8 +80,11 @@ const CeStudySet = (props) => {
     const handlesubmit = () => {
         if (validate()) {
             const studysetDb = cleanStudyset(studyset)
-            if(studysetProp) Firebase.removeStudySet(id)
-            const res = Firebase.addStudySet(studysetDb)
+
+            let res = false
+            if(studysetProp) res = Firebase.updateStudySet(id, studysetDb)
+            else  res = Firebase.addStudySet(studysetDb)
+            
             if (res) {
                 Notify.success(studysetProp ? "Update success!" : "Create success!" )
                 history.replace(ROUTER_PATH.STUDY_SET)
