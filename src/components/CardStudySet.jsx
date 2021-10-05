@@ -39,7 +39,7 @@ const CardStudySet = (props) => {
             </Card.Header>}
 
             <Card.Body>
-                <Card.Title className="fw-bold">
+                <Card.Title className="title">
                     {
                         title.length > 50
                         ? title.substr(0, 50).concat('...')
