@@ -9,6 +9,7 @@ import SearchBox from './SearchBox'
 import CardStudySet from './CardStudySet'
 import ModalConfirm from './ModalConfirm'
 import Footer from './Footer'
+import CeStudySet from './CeStudySet'
 
 export {
     Header,
@@ -22,4 +23,5 @@ export {
     CardStudySet,
     ModalConfirm,
     Footer,
+    CeStudySet,
 }

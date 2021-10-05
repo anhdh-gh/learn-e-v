@@ -1,25 +1,24 @@
 import '../assets/styles/UserInfo.css'
-import { auth } from '../config/firebase'
 
 const UserInfo = (props) => {
 
-    const { trim } = props
+    const { trim, photoURL, displayName, email } = props
 
     return <div className="user-info-container">
-        <img src={auth.currentUser?.photoURL} alt='' className="avata"/>
+        <img src={photoURL} alt='avata' className="avata"/>
         <div className="text-user-info">
             <p className="display-name">
                 {
-                    trim && auth.currentUser?.displayName.length > 15
-                    ? auth.currentUser?.displayName.substr(0, 15).concat('...')
-                    : auth.currentUser?.displayName
+                    trim && displayName.length > 15
+                    ? displayName.substr(0, 15).concat('...')
+                    : displayName
                 }
             </p>
             <p className="email">
                 {
-                    trim && auth.currentUser?.email.length > 15
-                    ? auth.currentUser?.email.substr(0, 15).concat('...')
-                    : auth.currentUser?.email
+                    trim && email.length > 15
+                    ? email.substr(0, 15).concat('...')
+                    : email
                 }
             </p>
         </div>

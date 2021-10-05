@@ -78,7 +78,14 @@ const Header = (props) => {
                                         </span>
                                     </span>
                                 }>
-                                <NavDropdown.Item disabled><UserInfo trim={true}/></NavDropdown.Item>
+                                <NavDropdown.Item disabled>
+                                    <UserInfo
+                                        trim={true}
+                                        photoURL={user?.photoURL}
+                                        displayName={user?.given_name}
+                                        email={user?.email}
+                                    />
+                                </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item><SignOut/></NavDropdown.Item>
                             </NavDropdown>

@@ -1,38 +1,39 @@
-.CeStudySetPage-container .infomation {
+.CeStudySet-container .infomation {
     padding: 24px 0;
     justify-content: space-between
 }
 
-.CeStudySetPage-container .infomation > .title {
+.CeStudySet-container .infomation > .title {
     font-weight: 700;
     font-size: 1.25rem;
     margin: 0;
+    border-bottom: .3125rem solid #3ccfcf;
 }
 
-.CeStudySetPage-container .wordCarts {
+.CeStudySet-container .wordCarts {
     background-color: #f6f7fb;
     min-height: 100vh;
 }
-.CeStudySetPage-container .wordCarts .wordCart-input {
+.CeStudySet-container .wordCarts .wordCart-input {
     border-radius: .5rem;
     cursor: move;
     position: relative;
     background-color: #FFF;
 }
 
-.CeStudySetPage-container .wordCarts .wordCart-input > .header {
+.CeStudySet-container .wordCarts .wordCart-input > .header {
     display: flex;
     justify-content: space-between;
     padding: .75rem;
     border-bottom: 2px solid #f6f7fb;
 }
 
-.CeStudySetPage-container .wordCarts .wordCart-input > .header .drag-icon {
+.CeStudySet-container .wordCarts .wordCart-input > .header .drag-icon {
     color: #CCC;
     padding: 0 2.5625rem;
 }   
 
-.CeStudySetPage-container .wordCarts .wordCart-input > .header .index {
+.CeStudySet-container .wordCarts .wordCart-input > .header .index {
     color: #939bb4;
     font-weight: 700;
     font-size: 1rem;
@@ -40,15 +41,15 @@
     line-height: 1.5;
 }
 
-.CeStudySetPage-container .wordCarts .wordCart-input > .header .delete-icon {
+.CeStudySet-container .wordCarts .wordCart-input > .header .delete-icon {
     cursor: pointer;
 }
 
-.CeStudySetPage-container .wordCarts .wordCart-input > .header .drag-icon:hover {
+.CeStudySet-container .wordCarts .wordCart-input > .header .drag-icon:hover {
     color: #FFCD1F;
 }
 
-.CeStudySetPage-container .wordCarts .wordCart-input .input-type {
+.CeStudySet-container .wordCarts .wordCart-input .input-type {
     padding: 2rem .75rem;
     cursor: initial;
 }

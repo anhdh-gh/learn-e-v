@@ -2,12 +2,14 @@ import HomePage from './HomePage'
 import PageNotFound from './PageNotFound'
 import StudySetPage from './StudySetPage'
 import RequireLoginPage from './RequireLoginPage'
-import CeStudySetPage from './CeStudySetPage'
+import CreateStudySetPage from './CreateStudySetPage'
+import EditStudySetPage from './EditStudySetPage'
 
 export {
     HomePage,
     StudySetPage,
     PageNotFound,
     RequireLoginPage,
-    CeStudySetPage,
+    CreateStudySetPage,
+    EditStudySetPage
 }

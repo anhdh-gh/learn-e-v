@@ -1,19 +1,15 @@
 import '../assets/styles/StudySetPage.css'
-import { Header, UserInfo, SearchBox, CardStudySet, ModalConfirm, Footer } from '../components'
+import { Header, UserInfo, SearchBox, CardStudySet, Footer } from '../components'
 import { Button } from 'react-bootstrap'
-import { useState } from 'react'
 import { ROUTER_PATH } from '../constants'
 import { NavLink } from "react-router-dom"
 import { useList } from 'react-firebase-hooks/database'
 import { auth, studySetDB } from '../config/firebase'
-import { Utils, Notify, Firebase } from '../utils'
+import { Utils } from '../utils'
 
 const StudySetPage = (props) => {
 
-    const [ showModalRemove , setShowModalRemove ] = useState(false)
-    const [ itemRE, setItemRE ] = useState({id: '', title: ''})
-
-    const [ studySetDataSnapshot, loading ] = useList(
+    const [ studySetDataSnapshot ] = useList(
         auth.currentUser ? 
         studySetDB.child(auth.currentUser?.uid)
         : ''
@@ -21,14 +17,7 @@ const StudySetPage = (props) => {
 
     const studyset = Utils.convertDataSnapshotToArray(studySetDataSnapshot)
 
-    const handleRemove = ()=> {
-        const res = Firebase.removeStudySet(itemRE.id)
-        if(res) Notify.success('Successful removal!')
-        else Notify.error('Error, try again!')
-        setShowModalRemove(false)
-    }   
-
-    return <>
+    return  <>
         <Header hideUnder={true}/>
         <div className="study-set-page-container">
 
@@ -37,7 +26,11 @@ const StudySetPage = (props) => {
                 <div className="container-xl">
                     <div className="row">
                         <div className="col-md">
-                            <UserInfo/>
+                            <UserInfo
+                                photoURL={auth?.currentUser?.photoURL}
+                                displayName={auth?.currentUser?.displayName}
+                                email={auth?.currentUser?.email}
+                            />
                         </div>
                         <div className="col-md d-flex align-items-end justify-content-between mt-4 mt-md-0">
                             <SearchBox placeholder="Search study set"/>
@@ -56,37 +49,19 @@ const StudySetPage = (props) => {
                     {
                         studyset.map((item, index) => 
                             <div className="col-md-6 col-lg-4 mb-3" key={item.id}>
-                                {
-                                    loading
-                                    ? <CardStudySet/>
-                                    : <CardStudySet
-                                        title={item.title}
-                                        subtitle={`Terms: ${item.wordCarts.length}`}
-                                        text={item.description}
-                                        handleRemove={() => {
-                                            setItemRE({id: item.id, title: item.title})
-                                            setShowModalRemove(true)
-                                        }}
-                                    />
-                                }
-
+                                <CardStudySet
+                                    id={item.id}
+                                    title={item.title}
+                                    description={item.description}
+                                    lengthWordCart={item.wordCarts.length}
+                                    showFooter={true}
+                                />
                             </div>                            
                         )
                     }
                     </div>
                 </div>
             </div>
-
-
-            {/* Phần modal xác nhận xóa học phần */}
-            <ModalConfirm
-                show={showModalRemove}
-                setShow={setShowModalRemove}
-                title="Confirm"
-                message={`Are you sure you want to delete study set "${itemRE.title}"?`}
-                handleNo={() => setShowModalRemove(false)}
-                handleYes={handleRemove}
-            />
         </div>      
         <Footer/>  
     </>
