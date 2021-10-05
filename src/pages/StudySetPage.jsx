@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom"
 import { useList } from 'react-firebase-hooks/database'
 import { auth, studySetDB } from '../config/firebase'
 import { Utils } from '../utils'
+import { useState } from "react"
 
 const StudySetPage = (props) => {
 
@@ -15,7 +16,15 @@ const StudySetPage = (props) => {
         : ''
     )
 
-    const studyset = Utils.convertDataSnapshotToArray(studySetDataSnapshot)
+    const [ search, setSearch ] = useState('')
+
+    const studyset = search
+    ? Utils.convertDataSnapshotToArray(studySetDataSnapshot).filter(item => 
+        item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
+        || item.description.trim().toLowerCase().includes(search.trim().toLowerCase())
+        || ('' + item.wordCarts.length).trim().toLowerCase().includes(search.trim().toLowerCase())
+    )
+    : Utils.convertDataSnapshotToArray(studySetDataSnapshot)
 
     return  <>
         <Header hideUnder={true}/>
@@ -33,7 +42,7 @@ const StudySetPage = (props) => {
                             />
                         </div>
                         <div className="col-md d-flex align-items-end justify-content-between mt-4 mt-md-0">
-                            <SearchBox placeholder="Search study set"/>
+                            <SearchBox placeholder="Search study set" value={search} onChange={e => setSearch(e.target.value)}/>
                             <NavLink to={ROUTER_PATH.STUDY_SET_CREATE}>
                                 <Button style={{height: 'fit-content', fontWeight: 'bold'}}>Create</Button>
                             </NavLink>
