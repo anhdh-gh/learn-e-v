@@ -1,13 +1,26 @@
 import '../assets/styles/HomePage.css'
-import { Header } from '../components'
+import { Header, Footer, CardStudySet } from '../components'
 import { Button } from 'react-bootstrap'
-
+import { Utils } from '../utils'
+import { useList } from 'react-firebase-hooks/database'
+import { userDB, studySetDB } from '../config/firebase'
 
 const HomePage = (props) => {
+
+    const [ userDataSnapshot, loadingUser ] = useList(userDB)
+    const [ studySetDataSnapshot, loadingStudyset ] = useList(studySetDB)
+
+    const users = Utils.convertDataSnapshotToArray(userDataSnapshot)
+
+    const studysets = Utils
+    .convertDataSnapshotToArray(studySetDataSnapshot)
+    .map(item => Utils.filterStudySet(users, item))
+    .reduce((acc, item) => { item.forEach(i => acc.push(i)); return acc}, [])
 
     return <>
         <Header hideUnder={true}/>
         <div className="homePage-container">
+
             <div className="header">
                 <div className="container-xxl py-sm-5 py-3">
                     <div className="row">
@@ -22,8 +35,32 @@ const HomePage = (props) => {
                 </div>
             </div>
 
-            <div style={{height: '500px'}}></div>
-        </div>        
+            <div className="main">
+                <div className="container-xl">
+                    <h4 className="fw-bold mb-5 pb-3 border-4 border-bottom border-danger d-inline-block">Outstanding study sets</h4>
+                    <div className="row">
+                    {!loadingUser && !loadingStudyset && 
+                        studysets.map((item, index) => 
+                        <div className="col-md-6 col-lg-4 mb-3" key={item.idStudyset}>
+                            <CardStudySet
+                                idAuthor={item.uid}
+                                idStudyset={item.idStudyset}
+                                title={item.title}
+                                description={item.description}
+                                lengthWordCart={3}
+                                showHeader={true}
+                                photoURL={item.photoURL}
+                                displayName={item.given_name}
+                                email={item.email}
+                            />
+                        </div>                            
+                        )
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <Footer/>    
     </>
 
 }

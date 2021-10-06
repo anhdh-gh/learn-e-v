@@ -18,7 +18,7 @@ const StudySetPage = (props) => {
 
     const [ search, setSearch ] = useState('')
 
-    const studyset = search
+    const studysets = search
     ? Utils.convertDataSnapshotToArray(studySetDataSnapshot).filter(item => 
         item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
         || item.description.trim().toLowerCase().includes(search.trim().toLowerCase())
@@ -56,7 +56,7 @@ const StudySetPage = (props) => {
                 <div className="container-xl">
                     <div className="row">
                     {
-                        studyset.map((item, index) => 
+                        studysets.map((item, index) => 
                             <div className="col-md-6 col-lg-4 mb-3" key={item.id}>
                                 <CardStudySet
                                     idAuthor={auth.currentUser?.uid}

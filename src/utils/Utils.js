@@ -8,9 +8,15 @@ const Utils = {
         return obj
     },
 
-    convertDataSnapshotToArray: object => {
+    convertDataSnapshotToArray: (object) => {
         const obj = Utils.convertDataSnapshotToObject(object)
         return Object.keys(obj).map(key => ({id: key, ...obj[key]}))
+    },
+
+    filterStudySet: (users, studysetsUser) => {
+        const { id, ...studysets } = studysetsUser
+        const [ user ] = users.filter(user => user.id === id) 
+        return Object.keys(studysets).map(key => ({...user, idStudyset: key, ...studysets[key]}))
     },
 
     filterUserObject: (userObject) => {

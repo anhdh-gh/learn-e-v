@@ -9,3 +9,8 @@
     display: flex;
     flex-direction: column-reverse;
 }
+
+.homePage-container > .main {
+    padding: 3rem 0;
+    background-color: #f6f7fb;
+}
