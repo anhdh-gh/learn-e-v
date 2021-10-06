@@ -7,6 +7,30 @@
     display: inline-block;
 }
 
+.ViewStudySetPage-container .func > div {
+    font-weight: bold;
+    padding: .25rem 1rem .25rem .5rem;
+    transition: all .12s cubic-bezier(.47,0,.745,.715);
+    border-radius: .25rem;
+    margin-bottom: .25rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.ViewStudySetPage-container .func > div:active {
+    transform: translate(-5px, 5px);
+}
+
+.ViewStudySetPage-container .func > div:hover {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    background-color: #ffcd1f;
+}
+
+.ViewStudySetPage-container .func i {
+    color: #4257b2;
+    font-size: 1.25rem;
+}
+
 .ViewStudySetPage-container .author .user-info-container > .avata {
     width: 64px;
     height: 64px;

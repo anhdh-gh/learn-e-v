@@ -3,9 +3,10 @@ import { Header, Footer, WordCartSlide, UserInfo } from '../components'
 import { useParams } from 'react-router'
 import { userDB, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
-import { Utils } from "../utils"
+import { Utils, Notify } from "../utils"
 import { PageNotFound } from './index'
 import _ from "lodash"
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const ViewStudySetPage = (props) => {
     const { idAuthor, idStudyset } = useParams()
@@ -30,7 +31,33 @@ const ViewStudySetPage = (props) => {
 
             <div className="container-xl">
                 <p className="title">{studyset.title}</p>
-                <WordCartSlide wordCarts={studyset.wordCarts}/>
+
+                <div className="row flex-column-reverse flex-md-row">
+                    <div className="col-md-2">
+                        <div className="func d-flex d-md-block justify-content-between mt-3 mt-0">
+
+                            <CopyToClipboard
+                                text={window.location.href}
+                                onCopy = {(text, result) => 
+                                    result
+                                    ? Notify.success("Copy to clipboard")
+                                    : Notify.error("Error, try again")
+                                }
+                            >
+                                <div className="share">
+                                    <i className="fas fa-share-square"/> Share
+                                </div>                                
+                            </CopyToClipboard>
+
+                            <div className="test">
+                            <i className="fas fa-pencil-ruler"/> Test
+                            </div>   
+                        </div>
+                    </div>
+                    <div className="col-md-10">
+                        <WordCartSlide wordCarts={studyset.wordCarts}/>
+                    </div>
+                </div>
 
                 <div className="border-top mt-5 py-4 author">
                     <UserInfo
