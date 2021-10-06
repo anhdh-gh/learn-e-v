@@ -2,9 +2,9 @@ import '../assets/styles/UserInfo.css'
 
 const UserInfo = (props) => {
 
-    const { trim, photoURL, displayName, email } = props
+    const { trim, photoURL, displayName, email, className } = props
 
-    return <div className="user-info-container">
+    return <div className={`user-info-container ${className}`}>
         <img src={photoURL} alt='avata' className="avata"/>
         <div className="text-user-info">
             <p className="display-name">

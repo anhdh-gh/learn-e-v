@@ -1,0 +1,55 @@
+.ViewStudySetPage-container .title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: .3125rem solid #3ccfcf;
+    padding: 8px 0;
+    display: inline-block;
+}
+
+.ViewStudySetPage-container .description {
+    color: #AAA;
+}
+
+.ViewStudySetPage-container > .wordCarts {
+    background-color: #f6f7fb;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.ViewStudySetPage-container > .wordCarts .info {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.ViewStudySetPage-container > .wordCarts .list {
+    font-weight: bold;
+    background-color: #FFF;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    margin-bottom: 1rem;
+}
+
+.ViewStudySetPage-container > .wordCarts .list:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.ViewStudySetPage-container > .wordCarts .list > div {
+    display: inline-block;
+    padding: 0 2rem;
+    overflow: visible;
+}
+
+.ViewStudySetPage-container > .wordCarts .list > .index {
+    width: 15%;
+    border-right: 1px solid #AAA;
+    text-align: center;
+}
+
+.ViewStudySetPage-container > .wordCarts .list > .term {
+    width: 35%;
+    border-right: 1px solid #AAA;
+}

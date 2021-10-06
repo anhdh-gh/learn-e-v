@@ -11,7 +11,7 @@ const WordCartSlide = (props) => {
         {
             wordCarts.map((item, index) => 
                 <Carousel.Item key={index} onClick={() => setIsFipped(!isFlipped)}>
-                    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+                    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                         <div className="item-front">
                             <div>{item.key}</div>
                         </div>
@@ -22,8 +22,8 @@ const WordCartSlide = (props) => {
                     </ReactCardFlip>
                     <Carousel.Caption>
                         <h6>{isFlipped
-                            ? "Defination"
-                            : "Term"
+                            ? `Defination (${index + 1})`
+                            : `Term (${index + 1})`
                         }</h6>
                     </Carousel.Caption>
                 </Carousel.Item>

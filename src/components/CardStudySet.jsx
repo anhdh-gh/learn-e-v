@@ -1,14 +1,17 @@
 import '../assets/styles/CardStudySet.css'
 import { Card, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { ROUTER_PATH } from '../constants'
-import { NavLink } from "react-router-dom"
 import { ModalConfirm, UserInfo } from './index'
 import { useState } from 'react'
 import { Notify, Firebase } from '../utils'
+import { useHistory } from 'react-router'
 
 const CardStudySet = (props) => {
-    const { 
-        id,
+    const history = useHistory()
+
+    const {
+        idAuthor,
+        idStudyset,
         title,
         description,
         lengthWordCart,
@@ -21,7 +24,7 @@ const CardStudySet = (props) => {
     const [ showModel, setShowModel ] = useState(false)
 
     const handleRemove = ()=> {
-        const res = Firebase.removeStudySet(id)
+        const res = Firebase.removeStudySet(idStudyset)
         if(res) Notify.success('Successful removal!')
         else Notify.error('Error, try again!')
         setShowModel(false)
@@ -38,7 +41,7 @@ const CardStudySet = (props) => {
                 />
             </Card.Header>}
 
-            <Card.Body>
+            <Card.Body onClick={() => history.push(`${ROUTER_PATH.STUDY_SET_VIEW}/${idAuthor}/${idStudyset}`)}>
                 <Card.Title className="title">
                     {
                         title.length > 50
@@ -47,7 +50,7 @@ const CardStudySet = (props) => {
                     }
                 </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                    <Badge pill bg="warning" text="dark">Term: {lengthWordCart}</Badge>
+                    <Badge pill bg="warning" text="dark">Terms: {lengthWordCart}</Badge>
                 </Card.Subtitle>
                 <Card.Text>
                     {
@@ -60,11 +63,9 @@ const CardStudySet = (props) => {
 
             {showFooter && <Card.Footer className="d-flex justify-content-between">
                 <OverlayTrigger placement="bottom" overlay={<Tooltip>Edit</Tooltip>}>
-                    <NavLink to={`${ROUTER_PATH.STUDY_SET_EDIT}/${id}`}>
-                        <Badge bg="primary">
-                            <i className="fas fa-edit fs-6"/>
-                        </Badge>                          
-                    </NavLink>
+                    <Badge bg="primary" onClick={() => history.push(`${ROUTER_PATH.STUDY_SET_EDIT}/${idStudyset}`)}>
+                        <i className="fas fa-edit fs-6"/>
+                    </Badge>                          
                 </OverlayTrigger>
 
                 <OverlayTrigger placement="bottom" overlay={<Tooltip>Remove</Tooltip>}>

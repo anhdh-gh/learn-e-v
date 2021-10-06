@@ -59,7 +59,8 @@ const StudySetPage = (props) => {
                         studyset.map((item, index) => 
                             <div className="col-md-6 col-lg-4 mb-3" key={item.id}>
                                 <CardStudySet
-                                    id={item.id}
+                                    idAuthor={auth.currentUser?.uid}
+                                    idStudyset={item.id}
                                     title={item.title}
                                     description={item.description}
                                     lengthWordCart={item.wordCarts.length}

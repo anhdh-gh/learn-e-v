@@ -1,4 +1,4 @@
-import { Header, Footer, CeStudySet, Loader } from '../components'
+import { Header, Footer, CeStudySet } from '../components'
 import { useParams } from 'react-router'
 import { auth, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
@@ -7,21 +7,21 @@ import { PageNotFound } from './index'
 import _ from "lodash"
 
 const EditStudySetPage = (props) => {
-    const { slug } = useParams()
+    const { idStudyset } = useParams()
 
     const [ studysetDataSnapshot, loading] = useList(
-        slug && auth.currentUser
-        ? studySetDB.child(auth.currentUser?.uid).child(slug)
+        idStudyset && auth.currentUser
+        ? studySetDB.child(auth.currentUser?.uid).child(idStudyset)
         : ''
     )
 
     const studyset = Utils.convertDataSnapshotToObject(studysetDataSnapshot)
 
-    return loading ? <Loader/> :
+    return loading ? <></> :
     _.isEmpty(studyset) ? <PageNotFound/> :
     <>
         <Header/>
-        <CeStudySet id={slug} studysetProp={studyset}/>
+        <CeStudySet id={idStudyset} studysetProp={studyset}/>
         <Footer/>
     </>
 }

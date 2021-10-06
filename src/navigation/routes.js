@@ -1,5 +1,12 @@
 import React from 'react'
-import { HomePage, PageNotFound, StudySetPage, CreateStudySetPage, EditStudySetPage } from '../pages'
+import {
+    HomePage,
+    PageNotFound,
+    StudySetPage,
+    CreateStudySetPage,
+    EditStudySetPage,
+    ViewStudySetPage,
+} from '../pages'
 import { ROUTER_PATH } from '../constants'
 
 const routes = {
@@ -17,9 +24,15 @@ const routes = {
         },      
         
         {
-            path: `${ROUTER_PATH.STUDY_SET_EDIT}/:slug`,
+            path: `${ROUTER_PATH.STUDY_SET_EDIT}/:idStudyset`,
             exact: true,
             main: () => <EditStudySetPage/>
+        },  
+
+        {
+            path: `${ROUTER_PATH.STUDY_SET_VIEW}/:idAuthor/:idStudyset`,
+            exact: true,
+            main: () => <ViewStudySetPage/>
         },  
     ],
 
