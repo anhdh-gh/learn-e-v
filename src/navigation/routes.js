@@ -38,16 +38,16 @@ const routes = {
         },
 
         {
-            path: ROUTER_PATH.PAGE_NOT_FOUND, // Không match với path nào ở phía trên (luôn đặt ở cuối cùng)
-            exact: false,
-            main: () => <PageNotFound />
-        },    
-        
-        {
             path: `${ROUTER_PATH.STUDY_SET_VIEW}/:idAuthor/:idStudyset`,
             exact: true,
             main: () => <ViewStudySetPage/>
         },  
+
+        {
+            path: ROUTER_PATH.PAGE_NOT_FOUND, // Không match với path nào ở phía trên (luôn đặt ở cuối cùng)
+            exact: false,
+            main: () => <PageNotFound />
+        },    
     ]
 }
 
