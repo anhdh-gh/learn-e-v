@@ -32,7 +32,7 @@ const ViewStudySetPage = (props) => {
                 <p className="title">{studyset.title}</p>
                 <WordCartSlide wordCarts={studyset.wordCarts}/>
 
-                <div className="border-top mt-5 py-4">
+                <div className="border-top mt-5 py-4 author">
                     <UserInfo
                         photoURL={author.photoURL}
                         displayName={author.displayName}

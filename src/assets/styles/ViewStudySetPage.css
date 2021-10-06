@@ -7,6 +7,15 @@
     display: inline-block;
 }
 
+.ViewStudySetPage-container .author .user-info-container > .avata {
+    width: 64px;
+    height: 64px;
+}
+
+.ViewStudySetPage-container .author .user-info-container > .text-user-info {
+    white-space: nowrap;
+}
+
 .ViewStudySetPage-container .description {
     color: #AAA;
 }
