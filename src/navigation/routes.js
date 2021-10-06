@@ -28,12 +28,6 @@ const routes = {
             exact: true,
             main: () => <EditStudySetPage/>
         },  
-
-        {
-            path: `${ROUTER_PATH.STUDY_SET_VIEW}/:idAuthor/:idStudyset`,
-            exact: true,
-            main: () => <ViewStudySetPage/>
-        },  
     ],
 
     publicRoute: [
@@ -48,6 +42,12 @@ const routes = {
             exact: false,
             main: () => <PageNotFound />
         },    
+        
+        {
+            path: `${ROUTER_PATH.STUDY_SET_VIEW}/:idAuthor/:idStudyset`,
+            exact: true,
+            main: () => <ViewStudySetPage/>
+        },  
     ]
 }
 
