@@ -1,0 +1,11 @@
+.homePage-container > .header {
+    background-color: #3b4c9b;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/home-page-backgound.png");
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+}
