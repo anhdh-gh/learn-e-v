@@ -1,0 +1,26 @@
+.WordCartSlide-container {
+    margin: auto;
+    margin-top: 10%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 1rem;
+}
+
+.WordCartSlide-container > .carousel-inner {
+    border-radius: 1rem;
+}
+
+.WordCartSlide-container .item-front,
+.WordCartSlide-container .item-back {
+    display: flex;
+    min-height: 340px;
+    cursor: pointer;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.WordCartSlide-container .item-front > div,
+.WordCartSlide-container .item-back > div {
+    font-weight: bold;
+    font-size: 3rem;
+    margin: auto;
+}
