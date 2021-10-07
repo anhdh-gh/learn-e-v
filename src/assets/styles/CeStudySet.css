@@ -1,3 +1,14 @@
+.CeStudySet-container {
+    position: relative;
+}
+
+.CeStudySet-container > .stricky-information {
+    background-color: #FFF;
+    z-index: 5000;
+    position: sticky;
+    top: 0;
+}
+
 .CeStudySet-container .infomation {
     padding: 24px 0;
     justify-content: space-between

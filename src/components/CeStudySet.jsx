@@ -113,17 +113,20 @@ const CeStudySet = (props) => {
     }
 
     return <div className="CeStudySet-container">
+        <div className="stricky-information">
+            <div className="container-xl">
+                <div className="infomation d-sm-flex">
+                    <p className="title">
+                        {studysetProp ? "Update study set" : "Create a new study set"}
+                    </p>
+                    <Button className="fw-bold mt-3 mt-sm-0" onClick={handlesubmit}>
+                        {studysetProp ? "Save" : "Create"}
+                    </Button>
+                </div>
+            </div>
+        </div>
 
         <div className="container-xl">
-            <div className="infomation d-sm-flex">
-                <p className="title">
-                    {studysetProp ? "Update study set" : "Create a new study set"}
-                </p>
-                <Button className="fw-bold mt-3 mt-sm-0" onClick={handlesubmit}>
-                    {studysetProp ? "Save" : "Create"}
-                </Button>
-            </div>
-
             <div className="row">
                 <div className="col col-md-6">
                     <Textarea
