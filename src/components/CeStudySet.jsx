@@ -222,7 +222,7 @@ const CeStudySet = (props) => {
                         wordCarts: [...studyset.wordCarts, { id: uuidv4(), key: '', value: '' }]
                     })}
                 >
-                    <i className="fas fa-plus"></i> Add cart
+                    <i className="fas fa-plus"></i> Add card
                 </Button>
             </div>
         </div>

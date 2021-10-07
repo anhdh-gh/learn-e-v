@@ -51,7 +51,7 @@ const HomePage = (props) => {
                                 idStudyset={item.idStudyset}
                                 title={item.title}
                                 description={item.description}
-                                lengthWordCart={3}
+                                lengthWordCart={item.wordCarts.length}
                                 showHeader={true}
                                 photoURL={item.photoURL}
                                 displayName={item.given_name}
