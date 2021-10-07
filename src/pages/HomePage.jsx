@@ -1,11 +1,15 @@
 import '../assets/styles/HomePage.css'
-import { Header, Footer, CardStudySet } from '../components'
+import { Header, Footer, CardStudySet, UserInfo } from '../components'
 import { Button } from 'react-bootstrap'
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
 import { userDB, studySetDB } from '../config/firebase'
+import { Carousel } from "react-bootstrap"
+import { useHistory } from 'react-router'
+import { ROUTER_PATH } from '../constants'
 
 const HomePage = (props) => {
+    const history = useHistory()
 
     const [ userDataSnapshot, loadingUser ] = useList(userDB)
     const [ studySetDataSnapshot, loadingStudyset ] = useList(studySetDB)
@@ -29,7 +33,7 @@ const HomePage = (props) => {
                             <p className="m-0">Steady vocabulary, step by step.</p>
                         </div>
                         <div className="col-sm-5 d-sm-flex justify-content-sm-end align-items-sm-end">
-                            <Button className="fw-bold btn btn-success mt-sm-0 mt-2">Get started</Button>
+                            <Button onClick={() => history.push(ROUTER_PATH.STUDY_SET)} className="fw-bold btn btn-success mt-sm-0 mt-2">Get started</Button>
                         </div>
                     </div>
                 </div>
@@ -57,6 +61,21 @@ const HomePage = (props) => {
                         )
                     }
                     </div>
+
+                    <h4 className="fw-bold my-5 pb-3 border-4 border-bottom border-danger d-inline-block">Regular users</h4>
+                    <Carousel interval={1000} variant="dark" controls={false} indicators={false}>
+                        {
+                            users.map((user, index) => <Carousel.Item key={user.uid}>
+                                <UserInfo
+                                    className="justify-content-center"
+                                    photoURL={user.photoURL}
+                                    displayName={user.displayName}
+                                    email={user.email}
+                                />
+                            </Carousel.Item>
+                            )
+                        }
+                    </Carousel>
                 </div>
             </div>
         </div>    
