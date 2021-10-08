@@ -67,7 +67,6 @@ const HomePage = (props) => {
                         {
                             users.map((user, index) => <Carousel.Item key={user.uid}>
                                 <UserInfo
-                                    trim={true}
                                     className="justify-content-center"
                                     photoURL={user.photoURL}
                                     displayName={user.displayName}

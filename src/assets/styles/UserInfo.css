@@ -5,7 +5,7 @@
 }
 
 .user-info-container {
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     align-items: center;
 }
@@ -21,6 +21,8 @@
     flex-direction: column;
     justify-content: center;
     margin-left: 10px;
+    white-space: nowrap;
+    overflow: auto;
 }
 
 .user-info-container > .text-user-info > .display-name {
