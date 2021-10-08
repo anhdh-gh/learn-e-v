@@ -57,7 +57,7 @@ const WordCartSlide = (props) => {
 
         <div className="control">
             <i className="fas fa-chevron-left px-4" onClick={() => setIndex((index - 1 + wordCarts.length)%wordCarts.length)}/>
-            <span>{isFlipped ? `Defination (${index + 1})` : `Term (${index + 1})`}</span>
+            <span>{isFlipped ? `Defination (${index + 1}/${wordCarts.length})` : `Term (${index + 1}/${wordCarts.length})`}</span>
             <i className="fas fa-chevron-right px-4" onClick={() => setIndex((index + 1)%wordCarts.length)}/>
         </div>  
     </div>
