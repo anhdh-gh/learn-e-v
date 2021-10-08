@@ -2,7 +2,7 @@ import '../assets/styles/CeStudySet.css'
 import { Textarea } from '../components'
 import { Button, OverlayTrigger, Tooltip, Badge } from 'react-bootstrap'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import _ from "lodash"
 import { v4 as uuidv4 } from "uuid"
 import { Notify, Firebase } from "../utils"
@@ -114,23 +114,15 @@ const CeStudySet = (props) => {
         setStudyset({...studyset, wordCarts: newWordCarts})
     }
 
-    const handleScroll = useCallback(e => {
-        const window = e.currentTarget;
-        if (y > window.scrollY) 
-            console.log("scrolling up")
-        else if (y < window.scrollY) 
-            console.log("scrolling down")
-        setY(window.scrollY)
+    useEffect(() => {
+        if(y === 0) strickyRef.current.style.boxShadow = "none"
+        else strickyRef.current.style.boxShadow = "0 0.25rem 1rem 0 rgb(0 0 0 / 16%)"
     }, [y])
 
     useEffect(() => {
-        console.log(y)
-    }, [y])
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [handleScroll])
+        window.addEventListener('scroll', e => setY(window.scrollY))
+        return () => window.removeEventListener('scroll', e => setY(window.scrollY))
+    }, [])
 
     return <div className="CeStudySet-container">
         <div className="stricky-information" ref={strickyRef}>

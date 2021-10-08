@@ -8,6 +8,7 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    box-shadow: 0 0.25rem 1rem 0 rgb(0 0 0 / 16%);
 }
 
 .CeStudySet-container .infomation {
