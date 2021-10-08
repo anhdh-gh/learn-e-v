@@ -5,6 +5,9 @@
     border-bottom: .3125rem solid #3ccfcf;
     padding: 8px 0;
     display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    max-width: 100%;
 }
 
 .ViewStudySetPage-container .func > div {
@@ -42,6 +45,7 @@
 
 .ViewStudySetPage-container .description {
     color: #AAA;
+    overflow: auto;
 }
 
 .ViewStudySetPage-container > .wordCarts {
@@ -69,19 +73,30 @@
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
-.ViewStudySetPage-container > .wordCarts .list > div {
-    display: inline-block;
-    padding: 0 2rem;
-    overflow: visible;
+.ViewStudySetPage-container > .wordCarts .list .index,
+.ViewStudySetPage-container > .wordCarts .list .term,
+.ViewStudySetPage-container > .wordCarts .list .definition {
+    overflow: auto;
 }
 
-.ViewStudySetPage-container > .wordCarts .list > .index {
-    width: 15%;
-    border-right: 1px solid #AAA;
+.ViewStudySetPage-container > .wordCarts .list .index {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-.ViewStudySetPage-container > .wordCarts .list > .term {
-    width: 35%;
-    border-right: 1px solid #AAA;
+.ViewStudySetPage-container > .wordCarts .list .tern-container {
+    border: 1px solid #DDD;
+    border-bottom: 0;
+    border-top: 0;
+}
+
+@media (max-width: 576px) {
+    .ViewStudySetPage-container > .wordCarts .list .tern-container {
+        border: 1px solid #DDD;
+        border-left: 0;
+        border-right: 0;  
+    }
 }

@@ -59,7 +59,7 @@ const ViewStudySetPage = (props) => {
                     </div>
                 </div>
 
-                <div className="border-top mt-5 py-4 author">
+                <div className="border-top mt-4 py-4 author">
                     <UserInfo
                         photoURL={author.photoURL}
                         displayName={author.displayName}
@@ -75,9 +75,23 @@ const ViewStudySetPage = (props) => {
                     {
                         studyset.wordCarts.map((item, index) => 
                             <div className="list" key={index}>
-                                <div className="index">{index+1}</div>
-                                <div className="term">{item.key}</div>
-                                <div className="definition">{item.value}</div>
+                                <div className="row">
+                                    <div className="col-sm-1 pb-sm-0 pb-2">
+                                        <div className="index">
+                                            <div>{index+1}</div>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-5 py-sm-0 py-2 tern-container">
+                                        <div className="term">
+                                            {item.key}
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6 pt-sm-0 pt-2">
+                                        <div className="definition">
+                                            {item.value}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>                              
                         )
                     }
