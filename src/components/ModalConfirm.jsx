@@ -7,7 +7,7 @@ const ModalConfirm = (props) => {
         <Modal.Header closeButton>
             <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{message}</Modal.Body>
+        <Modal.Body><div className="overflow-auto mw-100">{message}</div></Modal.Body>
         <Modal.Footer>
             <Button variant="danger" onClick={handleYes}>Yes</Button>
             <Button variant="primary" onClick={handleNo}>No</Button>
