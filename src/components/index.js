@@ -11,6 +11,7 @@ import ModalConfirm from './ModalConfirm'
 import Footer from './Footer'
 import CeStudySet from './CeStudySet'
 import WordCartSlide from './WordCartSlide'
+import ScrollToTop from './ScrollToTop'
 
 export {
     Header,
@@ -26,4 +27,5 @@ export {
     Footer,
     CeStudySet,
     WordCartSlide,
+    ScrollToTop,
 }
