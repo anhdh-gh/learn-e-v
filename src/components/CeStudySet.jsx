@@ -2,7 +2,7 @@ import '../assets/styles/CeStudySet.css'
 import { Textarea } from '../components'
 import { Button, OverlayTrigger, Tooltip, Badge } from 'react-bootstrap'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { useState } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import _ from "lodash"
 import { v4 as uuidv4 } from "uuid"
 import { Notify, Firebase } from "../utils"
@@ -12,6 +12,8 @@ import { ROUTER_PATH } from '../constants'
 const CeStudySet = (props) => {
     const { id, studysetProp } = props
     const history = useHistory()
+    const [ y, setY ] = useState(window.scrollY)
+    const strickyRef = useRef(null)
 
     const createWordCart = (key, value) => ({
         id: uuidv4(),
@@ -112,8 +114,26 @@ const CeStudySet = (props) => {
         setStudyset({...studyset, wordCarts: newWordCarts})
     }
 
+    const handleScroll = useCallback(e => {
+        const window = e.currentTarget;
+        if (y > window.scrollY) 
+            console.log("scrolling up")
+        else if (y < window.scrollY) 
+            console.log("scrolling down")
+        setY(window.scrollY)
+    }, [y])
+
+    useEffect(() => {
+        console.log(y)
+    }, [y])
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [handleScroll])
+
     return <div className="CeStudySet-container">
-        <div className="stricky-information">
+        <div className="stricky-information" ref={strickyRef}>
             <div className="container-xl">
                 <div className="infomation d-sm-flex">
                     <p className="title">

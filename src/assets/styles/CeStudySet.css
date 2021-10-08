@@ -6,6 +6,7 @@
     background-color: #FFF;
     z-index: 5000;
     position: sticky;
+    position: -webkit-sticky;
     top: 0;
 }
 
