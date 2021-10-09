@@ -40,7 +40,7 @@ const TestStudySetPage = (props) => {
                         displayName={author.displayName}
                         email="Author"
                     />
-                    <div className="description mt-3">{studyset.description}</div>
+                    <div className="description mt-3 text-break">{studyset.description}</div>
                 </div>              
 
             </div>
