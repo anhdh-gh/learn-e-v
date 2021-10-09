@@ -1,0 +1,32 @@
+.TestStudySetPage-container {
+    min-height: 100vh;
+}
+
+.TestStudySetPage-container > .info .title {
+    font-weight: 700;
+    font-size: 2rem;
+    border-bottom: .3125rem solid #3ccfcf;
+    padding: 8px 0;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.TestStudySetPage-container > .info .author .user-info-container > .avata {
+    width: 64px;
+    height: 64px;
+}
+
+.TestStudySetPage-container > .info .author .user-info-container > .text-user-info {
+    white-space: nowrap;
+}
+
+.TestStudySetPage-container > .content {
+    background-color: #f6f7fb;
+}
+
+.TestStudySetPage-container > .content > .test {
+    background-color: #f6f7fb;
+}

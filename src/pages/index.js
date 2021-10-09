@@ -5,6 +5,7 @@ import RequireLoginPage from './RequireLoginPage'
 import CreateStudySetPage from './CreateStudySetPage'
 import EditStudySetPage from './EditStudySetPage'
 import ViewStudySetPage from './ViewStudySetPage'
+import TestStudySetPage from './TestStudySetPage'
 
 export {
     HomePage,
@@ -13,5 +14,6 @@ export {
     RequireLoginPage,
     CreateStudySetPage,
     EditStudySetPage,
-    ViewStudySetPage
+    ViewStudySetPage,
+    TestStudySetPage,
 }

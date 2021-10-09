@@ -115,8 +115,14 @@ const CeStudySet = (props) => {
     }
 
     useEffect(() => {
-        if(y === 0) strickyRef.current.style.boxShadow = "none"
-        else strickyRef.current.style.boxShadow = "0 0.25rem 1rem 0 rgb(0 0 0 / 16%)"
+        if(y === 0) {
+            strickyRef.current.style.boxShadow = "none"
+            strickyRef.current.style.zIndex = "1000"
+        }
+        else {
+            strickyRef.current.style.boxShadow = "0 0.25rem 1rem 0 rgb(0 0 0 / 16%)"
+            strickyRef.current.style.zIndex = "2000"
+        }
     }, [y])
 
     const handleScroll = useCallback(e => {

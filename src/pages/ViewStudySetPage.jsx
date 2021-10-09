@@ -1,14 +1,17 @@
 import '../assets/styles/ViewStudySetPage.css'
 import { Header, Footer, WordCartSlide, UserInfo } from '../components'
-import { useParams } from 'react-router'
+import { useParams, useHistory } from 'react-router'
 import { userDB, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
 import { Utils, Notify } from "../utils"
 import { PageNotFound } from './index'
 import _ from "lodash"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { ROUTER_PATH } from '../constants'
 
 const ViewStudySetPage = (props) => {
+    const history = useHistory()
+
     const { idAuthor, idStudyset } = useParams()
 
     const [ userDataSnapshot, loadingUser ] = useList(idAuthor ? userDB.child(idAuthor) : '')
@@ -49,8 +52,8 @@ const ViewStudySetPage = (props) => {
                                 </div>                                
                             </CopyToClipboard>
 
-                            <div className="test">
-                            <i className="fas fa-pencil-ruler"/> Test
+                            <div className="test" onClick={() => history.push(`${ROUTER_PATH.STUDY_SET_TEST}/${idAuthor}/${idStudyset}`)}>
+                                <i className="fas fa-pencil-ruler"/> Test
                             </div>   
                         </div>
                     </div>

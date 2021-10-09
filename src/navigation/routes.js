@@ -6,6 +6,7 @@ import {
     CreateStudySetPage,
     EditStudySetPage,
     ViewStudySetPage,
+    TestStudySetPage,
 } from '../pages'
 import { ROUTER_PATH } from '../constants'
 
@@ -42,6 +43,12 @@ const routes = {
             exact: true,
             main: () => <ViewStudySetPage/>
         },  
+
+        {
+            path: `${ROUTER_PATH.STUDY_SET_TEST}/:idAuthor/:idStudyset`,
+            exact: true,
+            main: () => <TestStudySetPage/>
+        }, 
 
         {
             path: ROUTER_PATH.PAGE_NOT_FOUND, // Không match với path nào ở phía trên (luôn đặt ở cuối cùng)

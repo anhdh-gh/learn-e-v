@@ -12,6 +12,8 @@ import Footer from './Footer'
 import CeStudySet from './CeStudySet'
 import WordCartSlide from './WordCartSlide'
 import ScrollToTop from './ScrollToTop'
+import MultipleChoiceQuestion from './MultipleChoiceQuestion'
+import MultipleChoiceTest from './MultipleChoiceTest'
 
 export {
     Header,
@@ -28,4 +30,6 @@ export {
     CeStudySet,
     WordCartSlide,
     ScrollToTop,
+    MultipleChoiceQuestion,
+    MultipleChoiceTest,
 }

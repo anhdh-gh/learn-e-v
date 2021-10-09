@@ -1,0 +1,9 @@
+.MultipleChoiceTest-container {
+    background-color: #FFF;
+}
+
+.MultipleChoiceTest-container > h5 {
+    white-space: nowrap;
+    overflow: auto;
+    max-width: 100%;
+}
