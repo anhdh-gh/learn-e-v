@@ -26,8 +26,13 @@ const ViewStudySetPage = (props) => {
 
     const studyset = Utils.convertDataSnapshotToObject(studysetDataSnapshot)
 
+    console.log('1', userDataSnapshot, loadingUser, author)
+    console.log('2', studysetDataSnapshot, loadingStudyset, studyset)
+
     return loadingUser || loadingStudyset ? <></> :
-    _.isEmpty(author) || _.isEmpty(studyset) ? <PageNotFound/> :
+    _.isEmpty(author) ? <PageNotFound/> :
+    studysetDataSnapshot === undefined && _.isEmpty(studyset) ? <></> :
+    _.isEmpty(studyset) ? <PageNotFound/> :
     <>
         <Header/>
         <div className="ViewStudySetPage-container">

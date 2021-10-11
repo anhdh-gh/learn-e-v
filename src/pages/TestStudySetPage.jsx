@@ -25,7 +25,9 @@ const TestStudySetPage = (props) => {
     const test = Utils.convertWordCartsToTest(studyset.wordCarts)
 
     return loadingUser || loadingStudyset ? <></> :
-    _.isEmpty(author) || _.isEmpty(studyset) ? <PageNotFound/> :
+    _.isEmpty(author) ? <PageNotFound/> :
+    studysetDataSnapshot === undefined && _.isEmpty(studyset) ? <></> :
+    _.isEmpty(studyset) ? <PageNotFound/> :
     <>
         <Header/>
         <div className="TestStudySetPage-container">
