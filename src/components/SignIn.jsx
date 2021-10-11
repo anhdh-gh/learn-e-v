@@ -2,7 +2,7 @@ import { Firebase, Notify } from '../utils'
 
 const SignIn = (props) => {
 
-    const { signInRef } = props
+    const { style } = props
 
     const handleSignIn = async () => {
         const res = await Firebase.signInGoogle()
@@ -10,7 +10,9 @@ const SignIn = (props) => {
         else Notify.error('Login failed!')
     }
 
-    return <div ref={signInRef} onClick={handleSignIn}><i className="fab fa-google"></i> Sign in</div>
+    return <div onClick={handleSignIn} style={style}>
+        <i className="fab fa-google"/> Sign in
+    </div>
 }
 
 export default SignIn
