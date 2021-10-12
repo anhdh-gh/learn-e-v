@@ -114,7 +114,9 @@ const Utils = {
         const temp = array[index1]
         array[index1] = array[index2]
         array[index2] = temp
-    }
+    },
+
+    capitalizeFirstLetter: string => string?.charAt(0)?.toUpperCase() + string?.slice(1),
 }
 
 export default Utils

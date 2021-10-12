@@ -1,5 +1,5 @@
 import '../assets/styles/ViewStudySetPage.css'
-import { Header, Footer, WordCartSlide, UserInfo } from '../components'
+import { Footer, WordCartSlide, UserInfo } from '../components'
 import { useParams, useHistory } from 'react-router'
 import { userDB, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
@@ -31,8 +31,7 @@ const ViewStudySetPage = (props) => {
     studysetDataSnapshot === undefined && _.isEmpty(studyset) ? <></> :
     _.isEmpty(studyset) ? <PageNotFound/> :
     <>
-        <Header/>
-        <div className="ViewStudySetPage-container">
+        <div className="ViewStudySetPage-container mt-5">
 
             <div className="container-xl">
                 <p className="title">{studyset.title}</p>

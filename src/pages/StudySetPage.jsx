@@ -1,5 +1,5 @@
 import '../assets/styles/StudySetPage.css'
-import { Header, UserInfo, SearchBox, CardStudySet, Footer } from '../components'
+import { UserInfo, SearchBox, CardStudySet, Footer } from '../components'
 import { Button } from 'react-bootstrap'
 import { ROUTER_PATH } from '../constants'
 import { NavLink } from "react-router-dom"
@@ -27,7 +27,6 @@ const StudySetPage = (props) => {
     : Utils.convertDataSnapshotToArray(studySetDataSnapshot)
 
     return  <>
-        <Header hideUnder={true}/>
         <div className="study-set-page-container">
 
             {/* Phần các chức năng bên trên */}

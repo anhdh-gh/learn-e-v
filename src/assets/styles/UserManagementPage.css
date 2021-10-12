@@ -1,0 +1,48 @@
+.UserManagementPage-container {
+    padding-top: 60px;
+}
+
+.UserManagementPage-container .func {
+    padding: 24px 0;
+    justify-content: space-between;
+}
+
+.UserManagementPage-container .func .title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin: 0;
+    border-bottom: .3125rem solid #3ccfcf;
+    display: inline-block;
+}
+
+.UserManagementPage-container .content {
+    background-color: #f6f7fb;
+    min-height: 100vh;
+}
+
+.UserManagementPage-container .card-user {
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+    height: 100%;
+}
+
+.UserManagementPage-container .card-user:hover{
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.table-container {
+    border: 1px solid #d30000;
+    vertical-align: middle;
+    margin-bottom: 0;
+    height: 100%;
+    word-break: break-word;
+}
+  
+.table-container .title-table {
+    text-align: center;
+    background-color: #d30000;
+    color: #fff;
+    white-space: nowrap; /* Không cho tự động xuống dòng */
+}

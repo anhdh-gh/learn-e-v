@@ -18,7 +18,7 @@ const App = (props) => {
         userDB.child(user?.uid).set(Utils.filterUserObject({...data, ...user}))
       })
   }, [user, loading])
-
+  
   return <div className="App">
       {
         loading ? <Loader/> :

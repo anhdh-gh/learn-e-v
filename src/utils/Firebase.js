@@ -1,4 +1,4 @@
-import firebase, { auth, userDB, studySetDB } from '../config/firebase'
+import firebase, { auth, userDB, studySetDB, rulesDB } from '../config/firebase'
 import { Utils } from './index.js'
 
 const Firebase = {
@@ -48,6 +48,31 @@ const Firebase = {
     updateStudySet: (id, studyset) => {
         try {
             studySetDB.child(auth.currentUser.uid).child(id).update(studyset)
+            return true
+        }
+        catch (error) {
+            return false
+        }
+    },
+
+    removeUser: (idUser) => {
+        try {
+            userDB.child(idUser).remove()
+            studySetDB.child(idUser).remove()
+            rulesDB.child(idUser).remove()
+            return true
+        }
+        catch (error) {
+            return false
+        }
+    },
+
+    updateRule: (idUser, rule) => {
+        try {
+            if(rule === 'Admin')
+                rulesDB.child(idUser).set({admin: true}) 
+            else if(rule === 'Collaborator')
+                rulesDB.child(idUser).set({collaborator: true}) 
             return true
         }
         catch (error) {

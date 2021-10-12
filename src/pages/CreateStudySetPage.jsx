@@ -1,8 +1,7 @@
-import { Header, Footer, CeStudySet } from '../components'
+import { Footer, CeStudySet } from '../components'
 
 const CreateStudySetPage = (props) => {
     return <>
-        <Header/>
         <CeStudySet/>
         <Footer/>
     </>

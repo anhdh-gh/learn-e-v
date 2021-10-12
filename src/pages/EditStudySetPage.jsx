@@ -1,4 +1,4 @@
-import { Header, Footer, CeStudySet } from '../components'
+import { Footer, CeStudySet } from '../components'
 import { useParams } from 'react-router'
 import { auth, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
@@ -20,7 +20,6 @@ const EditStudySetPage = (props) => {
     return loading ? <></> :
     _.isEmpty(studyset) ? <PageNotFound/> :
     <>
-        <Header/>
         <CeStudySet id={idStudyset} studysetProp={studyset}/>
         <Footer/>
     </>

@@ -1,6 +1,6 @@
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../config/firebase'
-import { RequireLoginPage } from '../pages'
+import { RequirePage } from '../pages'
 import { Route } from 'react-router-dom'
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -9,7 +9,13 @@ function PrivateRoute({ component: Component, ...rest }) {
     return (
         <Route
             {...rest}
-            render={(props) => user ? <Component {...props} /> : <RequireLoginPage/>}
+            render={(props) => user ?
+                <Component {...props} /> : 
+                <RequirePage
+                    title="Opps! You need to login"
+                    signInBt={true}
+                />
+            }
         />
     )
 }

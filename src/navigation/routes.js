@@ -7,10 +7,19 @@ import {
     EditStudySetPage,
     ViewStudySetPage,
     TestStudySetPage,
+    UserManagementPage
 } from '../pages'
 import { ROUTER_PATH } from '../constants'
 
 const routes = {
+    privateOperatorRoute: [
+        {
+            path: `${ROUTER_PATH.DASHBOARD_USERS}`,
+            exact: true,
+            main: () => <UserManagementPage/>
+        },
+    ],
+
     privateRoute: [
         {
             path: `${ROUTER_PATH.STUDY_SET}`,

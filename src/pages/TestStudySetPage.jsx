@@ -1,5 +1,5 @@
 import '../assets/styles/TestStudySetPage.css'
-import { Header, Footer, UserInfo, MultipleChoiceTest } from '../components'
+import { Footer, UserInfo, MultipleChoiceTest } from '../components'
 import { useParams } from 'react-router'
 import { userDB, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
@@ -29,8 +29,7 @@ const TestStudySetPage = (props) => {
     studysetDataSnapshot === undefined && _.isEmpty(studyset) ? <></> :
     _.isEmpty(studyset) ? <PageNotFound/> :
     <>
-        <Header/>
-        <div className="TestStudySetPage-container">
+        <div className="TestStudySetPage-container mt-5">
 
             <div className="container-xl info">
 

@@ -9,14 +9,14 @@ const UserInfo = (props) => {
         <div className="text-user-info">
             <p className="display-name">
                 {
-                    trim && displayName.length > 15
+                    trim && displayName?.length > 15
                     ? displayName.substr(0, 15).concat('...')
                     : displayName
                 }
             </p>
             <p className="email">
                 {
-                    trim && email.length > 15
+                    trim && email?.length > 15
                     ? email.substr(0, 15).concat('...')
                     : email
                 }

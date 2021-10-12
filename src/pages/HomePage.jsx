@@ -1,5 +1,5 @@
 import '../assets/styles/HomePage.css'
-import { Header, Footer, CardStudySet, UserInfo } from '../components'
+import { Footer, CardStudySet, UserInfo } from '../components'
 import { Button } from 'react-bootstrap'
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
@@ -22,7 +22,6 @@ const HomePage = (props) => {
     .reduce((acc, item) => { item.forEach(i => acc.push(i)); return acc}, [])
 
     return <>
-        <Header hideUnder={true}/>
         <div className="homePage-container">
 
             <div className="header">

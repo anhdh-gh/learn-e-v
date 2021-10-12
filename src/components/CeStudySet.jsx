@@ -136,7 +136,7 @@ const CeStudySet = (props) => {
     }, [handleScroll])
 
     return <div className="CeStudySet-container">
-        <div className="stricky-information" ref={strickyRef}>
+        <div className="stricky-information mt-5" ref={strickyRef}>
             <div className="container-xl">
                 <div className="infomation d-sm-flex">
                     <p className="title">

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather");
 
 .pageNotFound-container {
+  z-index: 5000;
   margin: 0;
   padding: 0;
   display: flex;
@@ -12,11 +13,12 @@
   background: #C33764;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  overflow: hidden;
 }
 
 .pageNotFound-container .title {
   color: #fff;
-  font-size: 130px;
+  font-size: 120px;
   margin-top: 40px;
 }
 
