@@ -1,7 +1,7 @@
 import '../assets/styles/MultipleChoiceTest.css'
 import { useState } from 'react'
 import { MultipleChoiceQuestion } from './index'
-import { Button, ProgressBar } from 'react-bootstrap'
+import { Button, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 const MultipleChoiceTest = (props) => {
     const { test } = props
@@ -30,9 +30,23 @@ const MultipleChoiceTest = (props) => {
         {!showResult && <Button onClick={showTestScore} className="w-100 fw-bold">Check answers</Button>}
 
         {showResult && <ProgressBar className="fs-6 fw-bold">
-            <ProgressBar max={test.length} variant="danger" now={showResult[0]} label={`${showResult[0]}/${test.length}`}/>
-            <ProgressBar max={test.length} variant="warning" now={showResult[1]} label={`${showResult[1]}/${test.length}`}/>
-            <ProgressBar max={test.length} variant="success" now={showResult[2]} label={`${showResult[2]}/${test.length}`}/>
+            <ProgressBar max={test.length} variant="danger" now={showResult[0]} 
+                label={<OverlayTrigger
+                    placement="bottom"
+                    overlay={<Tooltip>Empty</Tooltip>}
+            ><span>{`${showResult[0]}/${test.length}`}</span></OverlayTrigger>}/>
+            
+            <ProgressBar max={test.length} variant="warning" now={showResult[1]} 
+                label={<OverlayTrigger
+                    placement="bottom"
+                    overlay={<Tooltip>Incorrect</Tooltip>}
+            ><span>{`${showResult[1]}/${test.length}`}</span></OverlayTrigger>}/>
+
+            <ProgressBar max={test.length} variant="success" now={showResult[2]} 
+                label={<OverlayTrigger
+                    placement="bottom"
+                    overlay={<Tooltip>Correct</Tooltip>}
+            ><span>{`${showResult[2]}/${test.length}`}</span></OverlayTrigger>}/>
         </ProgressBar>} 
     </div>
 }
