@@ -7,7 +7,8 @@ import {
     EditStudySetPage,
     ViewStudySetPage,
     TestStudySetPage,
-    UserManagementPage
+    UserManagementPage,
+    StudysetManagementPage,
 } from '../pages'
 import { ROUTER_PATH } from '../constants'
 
@@ -17,6 +18,11 @@ const routes = {
             path: `${ROUTER_PATH.DASHBOARD_USERS}`,
             exact: true,
             main: () => <UserManagementPage/>
+        },
+        {
+            path: `${ROUTER_PATH.DASHBOARD_STUDYSET}`,
+            exact: true,
+            main: () => <StudysetManagementPage/>
         },
     ],
 
@@ -34,7 +40,7 @@ const routes = {
         },      
         
         {
-            path: `${ROUTER_PATH.STUDY_SET_EDIT}/:idStudyset`,
+            path: `${ROUTER_PATH.STUDY_SET_EDIT}/:idAuthor/:idStudyset`,
             exact: true,
             main: () => <EditStudySetPage/>
         },  

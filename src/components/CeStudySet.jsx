@@ -7,10 +7,9 @@ import _ from "lodash"
 import { v4 as uuidv4 } from "uuid"
 import { Notify, Firebase } from "../utils"
 import { useHistory } from "react-router-dom"
-import { ROUTER_PATH } from '../constants'
 
 const CeStudySet = (props) => {
-    const { id, studysetProp } = props
+    const { idAuthor, id, studysetProp } = props
     const history = useHistory()
     const [ y, setY ] = useState(window.scrollY)
     const strickyRef = useRef(null)
@@ -84,12 +83,12 @@ const CeStudySet = (props) => {
             const studysetDb = cleanStudyset(studyset)
 
             let res = false
-            if(studysetProp) res = Firebase.updateStudySet(id, studysetDb)
-            else  res = Firebase.addStudySet(studysetDb)
+            if(studysetProp) res = Firebase.updateStudySet(idAuthor, id, studysetDb)
+            else res = Firebase.addStudySet(studysetDb)
             
             if (res) {
                 Notify.success(studysetProp ? "Update success!" : "Create success!" )
-                history.replace(ROUTER_PATH.STUDY_SET)
+                history.goBack()
             }
             else Notify.error('Error, try again!')
         }

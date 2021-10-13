@@ -8,6 +8,7 @@ const Firebase = {
             const res = await auth.signInWithPopup(provider)
             const user = Utils.filterUserObject({ ...res.user, ...res.additionalUserInfo, ...res.additionalUserInfo.profile})
             userDB.child(user?.uid).set(user)   
+            if(user?.isNewUser) rulesDB.child(user?.uid).set({user: true}) 
             return true         
         }
         catch (error) {
@@ -35,9 +36,9 @@ const Firebase = {
         }
     },
 
-    removeStudySet: id => {
+    removeStudySet: (idStudyset, idAuthor = auth?.currentUser?.uids) => {
         try {
-            studySetDB.child(auth.currentUser.uid).child(id).remove()
+            studySetDB.child(idAuthor).child(idStudyset).remove()
             return true
         }
         catch (error) {
@@ -45,9 +46,9 @@ const Firebase = {
         }
     },
 
-    updateStudySet: (id, studyset) => {
+    updateStudySet: (idAuthor = auth?.currentUser?.uid, id, studyset) => {
         try {
-            studySetDB.child(auth.currentUser.uid).child(id).update(studyset)
+            studySetDB.child(idAuthor).child(id).update(studyset)
             return true
         }
         catch (error) {
@@ -73,6 +74,8 @@ const Firebase = {
                 rulesDB.child(idUser).set({admin: true}) 
             else if(rule === 'Collaborator')
                 rulesDB.child(idUser).set({collaborator: true}) 
+            else if(rule === 'User')
+                rulesDB.child(idUser).set({user: true}) 
             return true
         }
         catch (error) {

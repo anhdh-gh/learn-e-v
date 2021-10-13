@@ -24,7 +24,7 @@ const CardStudySet = (props) => {
     const [ showModel, setShowModel ] = useState(false)
 
     const handleRemove = ()=> {
-        const res = Firebase.removeStudySet(idStudyset)
+        const res = Firebase.removeStudySet(idStudyset, idAuthor)
         if(res) Notify.success('Successful removal!')
         else Notify.error('Error, try again!')
         setShowModel(false)
@@ -63,7 +63,7 @@ const CardStudySet = (props) => {
 
             {showFooter && <Card.Footer className="d-flex justify-content-between">
                 <OverlayTrigger placement="bottom" overlay={<Tooltip>Edit</Tooltip>}>
-                    <Badge bg="primary" onClick={() => history.push(`${ROUTER_PATH.STUDY_SET_EDIT}/${idStudyset}`)}>
+                    <Badge bg="primary" onClick={() => history.push(`${ROUTER_PATH.STUDY_SET_EDIT}/${idAuthor}/${idStudyset}`)}>
                         <i className="fas fa-edit fs-6"/>
                     </Badge>                          
                 </OverlayTrigger>

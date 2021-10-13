@@ -1,26 +1,32 @@
 import { Footer, CeStudySet } from '../components'
 import { useParams } from 'react-router'
-import { auth, studySetDB } from '../config/firebase'
+import { auth, studySetDB, rulesDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
 import { Utils } from "../utils"
 import { PageNotFound } from './index'
 import _ from "lodash"
 
 const EditStudySetPage = (props) => {
-    const { idStudyset } = useParams()
+    const { idAuthor, idStudyset } = useParams()
+
+    const [ operatorDatasnapshot, loadingOperator ] = useList(auth?.currentUser ? rulesDB.child(auth?.currentUser?.uid) : '')
+    const position = Utils.convertDataSnapshotToObject(operatorDatasnapshot)
+
+    const allow = idAuthor === auth?.currentUser?.uid || (!_.isEmpty(operatorDatasnapshot) && (position?.admin || position?.collaborator))
 
     const [ studysetDataSnapshot, loading] = useList(
-        idStudyset && auth.currentUser
-        ? studySetDB.child(auth.currentUser?.uid).child(idStudyset)
+        idAuthor && idStudyset
+        ? studySetDB.child(idAuthor).child(idStudyset)
         : ''
     )
 
     const studyset = Utils.convertDataSnapshotToObject(studysetDataSnapshot)
 
-    return loading ? <></> :
+    return loadingOperator || loading ? <></> :
+    !allow ? <PageNotFound/> :
     _.isEmpty(studyset) ? <PageNotFound/> :
     <>
-        <CeStudySet id={idStudyset} studysetProp={studyset}/>
+        <CeStudySet idAuthor={idAuthor} id={idStudyset} studysetProp={studyset}/>
         <Footer/>
     </>
 }

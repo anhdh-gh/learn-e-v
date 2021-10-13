@@ -1,0 +1,21 @@
+.StudysetManagementPage-container {
+    padding-top: 60px;
+}
+
+.StudysetManagementPage-container .func {
+    padding: 24px 0;
+    justify-content: space-between;
+}
+
+.StudysetManagementPage-container .func .title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin: 0;
+    border-bottom: .3125rem solid #3ccfcf;
+    display: inline-block;
+}
+
+.StudysetManagementPage-container .content {
+    background-color: #f6f7fb;
+    min-height: 100vh;
+}

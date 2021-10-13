@@ -1,6 +1,7 @@
 const ROUTER_PATH = {
     // Private operator routers
     DASHBOARD_USERS: '/dashboard/users',
+    DASHBOARD_STUDYSET: '/dashboard/studyset',
 
     // Private routers
     STUDY_SET: '/studyset',

@@ -4,10 +4,12 @@ import { RequirePage } from '../pages'
 import { Route } from 'react-router-dom'
 import { useList } from 'react-firebase-hooks/database'
 import _ from 'lodash'
+import { Utils } from '../utils'
 
 function PrivateOperatorRoute({ component: Component, ...rest }) {
     const [ user ] = useAuthState(auth)
     const [ operatorDatasnapshot, loading ] = useList(user ? rulesDB.child(user?.uid) : '')    
+    const position = Utils.convertDataSnapshotToObject(operatorDatasnapshot)
 
     return (
         <Route
@@ -20,9 +22,11 @@ function PrivateOperatorRoute({ component: Component, ...rest }) {
                 />
                 : loading
                     ? <></>
-                    :   _.isEmpty(operatorDatasnapshot)
+                    : _.isEmpty(operatorDatasnapshot)
                         ? <RequirePage title="You are not an operator. Re-login!"/>
-                        : <Component {...props}/> 
+                        : position?.admin || position?.collaborator
+                            ? <Component {...props}/> 
+                            : <RequirePage title="You are not an operator. Re-login!"/>
             }
         />
     )

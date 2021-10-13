@@ -20,6 +20,7 @@ const Header = (props) => {
     )
     const user = Utils.convertDataSnapshotToObject(userDataSnapshot)
     const [operatorDatasnapshot, loadingOperator] = useList(user?.uid ? rulesDB.child(user?.uid) : '')
+    const position = Utils.convertDataSnapshotToObject(operatorDatasnapshot)
 
     return <Navbar expand="sm" variant="dark" fixed="top" className="header-container">
         <Container fluid>
@@ -58,7 +59,7 @@ const Header = (props) => {
                             <Placeholder xs={6} style={{ width: '100px' }} />
                         </Placeholder>
 
-                        : !_.isEmpty(operatorDatasnapshot) &&
+                        : !_.isEmpty(operatorDatasnapshot) && (position?.admin || position?.collaborator) && 
 
                         <NavDropdown title="Dashboard" className="dashboard-dropdown" active="active">
                             <NavDropdown.Item as="span" className="fw-bold">
@@ -67,7 +68,7 @@ const Header = (props) => {
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as="span" className="fw-bold">
-                                <NavLink to={ROUTER_PATH.DASHBOARD_USERS}>
+                                <NavLink to={ROUTER_PATH.DASHBOARD_STUDYSET}>
                                     <i className="fas fa-book-open"/> Study sets
                                 </NavLink>
                             </NavDropdown.Item>
