@@ -11,7 +11,9 @@ const MultipleChoiceQuestion = (props) => {
                 showResult
                     ? correct === props.testItem.choice
                         ? 'text-success'
-                        : 'text-danger'
+                        : props.testItem.choice
+                            ? 'text-warning'
+                            : 'text-danger'
                     : ''                
             }`}>{`${id + 1}. ${question}`}</p>
             {
@@ -34,10 +36,10 @@ const MultipleChoiceQuestion = (props) => {
                                 showResult
                                 ? answer === props.testItem.choice
                                     ? correct === props.testItem.choice
-                                        ? 'text-success'
-                                        : 'text-danger'
+                                        ? 'text-success fw-bold'
+                                        : 'text-warning'
                                     : answer === correct
-                                        ? 'text-success'
+                                        ? 'text-success fw-bold'
                                         : ''
                                 : ''
                                 }`}
