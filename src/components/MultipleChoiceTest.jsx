@@ -29,7 +29,7 @@ const MultipleChoiceTest = (props) => {
 
         {!showResult && <Button onClick={showTestScore} className="w-100 fw-bold">Check answers</Button>}
 
-        {showResult && <ProgressBar>
+        {showResult && <ProgressBar className="fs-6">
             <ProgressBar max={test.length} variant="danger" now={showResult[0]} label={`${showResult[0]}/${test.length}`}/>
             <ProgressBar max={test.length} variant="warning" now={showResult[1]} label={`${showResult[1]}/${test.length}`}/>
             <ProgressBar max={test.length} variant="success" now={showResult[2]} label={`${showResult[2]}/${test.length}`}/>
