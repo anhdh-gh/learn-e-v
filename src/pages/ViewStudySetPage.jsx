@@ -44,7 +44,7 @@ const ViewStudySetPage = (props) => {
                                 text={window.location.href}
                                 onCopy = {(text, result) => 
                                     result
-                                    ? Notify.success("Copy to clipboard")
+                                    ? Notify.success("Copied to clipboard")
                                     : Notify.error("Error, try again")
                                 }
                             >
