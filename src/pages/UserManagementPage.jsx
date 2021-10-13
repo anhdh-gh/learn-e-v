@@ -27,8 +27,8 @@ const UserManagementPage = (props) => {
 
     const myRules = rules[auth?.currentUser?.uid]
 
-    const handleRemove = () => {
-        const res = Firebase.removeUser(showModel?.userRemove?.id)
+    const handleReset = () => {
+        const res = Firebase.resetUser(showModel?.userReset?.id)
         if (res) Notify.success('Successful removal!')
         else Notify.error('Error, try again!')
         setShowModel({ show: false })
@@ -64,9 +64,9 @@ const UserManagementPage = (props) => {
                         {
                             users?.map(user => <div key={user?.uid} className="col-sm-6 col-md-4 col-lg-3 mt-3">
                                 <Card className="card-user">
-                                    <Card.Img variant="top" src={user?.photoURL} />
+                                    <Card.Img variant="top" src={user?.photoURL} onClick={() => setShowVEUser({ type: 'view', ...user, show: true })}/>
                                     <Card.Body onClick={() => setShowVEUser({ type: 'view', ...user, show: true })}>
-                                        <Card.Title className="fw-bold">{user?.displayName}</Card.Title>
+                                        <Card.Title className="title">{user?.displayName}</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">
                                             <Badge pill bg="warning" text="dark">
                                                 {
@@ -92,11 +92,11 @@ const UserManagementPage = (props) => {
                                             </Badge>
                                         </OverlayTrigger>
 
-                                        <OverlayTrigger placement="bottom" overlay={<Tooltip>Remove</Tooltip>}>
+                                        <OverlayTrigger placement="bottom" overlay={<Tooltip>Reset</Tooltip>}>
                                             <Badge bg="danger"
                                                 onClick={() => setShowModel({
                                                     show: true,
-                                                    userRemove: { id: user?.uid, displayName: user?.displayName }
+                                                    userReset: { id: user?.uid, displayName: user?.displayName }
                                                 })}>
                                                 <i className="fas fa-trash-alt fs-6" />
                                             </Badge>
@@ -114,9 +114,9 @@ const UserManagementPage = (props) => {
                 show={showModel.show}
                 setShow={() => setShowModel({ show: false })}
                 title="Confirm"
-                message={`Are you sure you want to delete user: "${showModel?.userRemove?.displayName}"?`}
+                message={`Are you sure you want to reset user: "${showModel?.userReset?.displayName}"?`}
                 handleNo={() => setShowModel({ show: false })}
-                handleYes={handleRemove}
+                handleYes={handleReset}
             />
 
             {/* Update user */}
@@ -151,7 +151,7 @@ const UserManagementPage = (props) => {
                                 <tr className="fw-bold">
                                     <td>Position</td>
                                     <td>
-                                        {showVEUser?.type === 'update'
+                                        {showVEUser?.type === 'update' && myRules?.admin
                                             ? <Form.Select onChange={e => setUpdate(e.target.value)} size="sm" defaultValue={showVEUser?.admin ? 'Admin' : showVEUser?.collaborator ? 'Collaborator' : 'User'}>
                                                 <option value="Admin">Admin</option>
                                                 <option value="Collaborator">Collaborator</option>

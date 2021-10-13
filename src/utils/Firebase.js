@@ -56,11 +56,10 @@ const Firebase = {
         }
     },
 
-    removeUser: (idUser) => {
+    resetUser: (idUser) => {
         try {
-            userDB.child(idUser).remove()
             studySetDB.child(idUser).remove()
-            rulesDB.child(idUser).remove()
+            rulesDB.child(idUser).set({user: true}) 
             return true
         }
         catch (error) {
