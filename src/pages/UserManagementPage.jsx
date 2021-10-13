@@ -152,7 +152,7 @@ const UserManagementPage = (props) => {
                                     <td>Position</td>
                                     <td>
                                         {showVEUser?.type === 'update' && myRules?.admin
-                                            ? <Form.Select onChange={e => setUpdate(e.target.value)} size="sm" defaultValue={showVEUser?.admin ? 'Admin' : showVEUser?.collaborator ? 'Collaborator' : 'User'}>
+                                            ? <Form.Select style={{cursor: 'pointer'}} onChange={e => setUpdate(e.target.value)} size="sm" defaultValue={showVEUser?.admin ? 'Admin' : showVEUser?.collaborator ? 'Collaborator' : 'User'}>
                                                 <option value="Admin">Admin</option>
                                                 <option value="Collaborator">Collaborator</option>
                                                 <option value="User">User</option>

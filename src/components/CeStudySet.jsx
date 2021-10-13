@@ -87,7 +87,7 @@ const CeStudySet = (props) => {
             else res = Firebase.addStudySet(studysetDb)
             
             if (res) {
-                Notify.success(studysetProp ? "Update success!" : "Create success!" )
+                Notify.success(studysetProp ? "Updated successfully!" : "Created successfully!" )
                 history.goBack()
             }
             else Notify.error('Error, try again!')
