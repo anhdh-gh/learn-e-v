@@ -15,7 +15,7 @@ const SignOut = (props) => {
         else Notify.error('Logout failed!')        
     }
 
-    return <div onClick={handleSignOut}><i className="fas fa-sign-out-alt" /> Sign out</div>
+    return <div onClick={handleSignOut} style={{cursor: 'pointer'}}><i className="fas fa-sign-out-alt" /> Sign out</div>
 }
 
 export default SignOut

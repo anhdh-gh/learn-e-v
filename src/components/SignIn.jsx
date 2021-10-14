@@ -10,7 +10,7 @@ const SignIn = (props) => {
         else Notify.error('Login failed!')
     }
 
-    return <div onClick={handleSignIn} style={style}>
+    return <div onClick={handleSignIn} style={{...style, cursor: 'pointer'}}>
         <i className="fab fa-google"/> Sign in
     </div>
 }

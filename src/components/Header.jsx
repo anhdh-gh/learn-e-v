@@ -1,16 +1,15 @@
 import '../assets/styles/Header.css'
 import { Navbar, Container, Nav, NavDropdown, Placeholder, Badge } from 'react-bootstrap'
-import { NavLink } from "react-router-dom"
 import _ from 'lodash'
 import { ROUTER_PATH } from '../constants'
 import { useList } from 'react-firebase-hooks/database'
 import { auth, userDB, rulesDB } from '../config/firebase'
 import { Utils } from '../utils'
-import { useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router"
 import { UserInfo, SignIn, SignOut } from './index'
 
 const Header = (props) => {
-
+    const history = useHistory()
     const { pathname } = useLocation()
 
     const [userDataSnapshot, loading] = useList(
@@ -22,36 +21,45 @@ const Header = (props) => {
     const [operatorDatasnapshot, loadingOperator] = useList(user?.uid ? rulesDB.child(user?.uid) : '')
     const position = Utils.convertDataSnapshotToObject(operatorDatasnapshot)
 
-    return <Navbar expand="sm" variant="dark" fixed="top" className="header-container">
+    return <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" className="header-container">
         <Container fluid>
-            <Navbar.Brand className="fw-bold">
-                <NavLink to={ROUTER_PATH.HOME}>
-                    <i className="fas fa-book-reader" /> Learn EV
-                </NavLink>
+            <Navbar.Brand 
+                className="fw-bold"
+                onClick={() => history.push(ROUTER_PATH.HOME)}
+                style={{cursor: 'pointer'}}
+            >
+                <i className="fas fa-book-reader" /> Learn EV
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="navbarScroll" />
 
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="my-2 my-sm-0">
-                    <Nav.Link href={ROUTER_PATH.HOME} as="span" active="active">
-                        <NavLink to={ROUTER_PATH.HOME}>
-                            {
-                                pathname === ROUTER_PATH.HOME
-                                    ? <Badge pill bg="primary">Home</Badge>
-                                    : 'Home'
-                            }
-                        </NavLink>
+                    
+                    <Nav.Link
+                        style={{cursor: 'pointer'}}
+                        as="span"
+                        href="#"
+                        active="active"
+                        onClick={() => history.push(ROUTER_PATH.HOME)}
+                    >
+                        {pathname === ROUTER_PATH.HOME
+                            ? <Badge pill bg="primary">Home</Badge>
+                            : 'Home'
+                        }
                     </Nav.Link>
 
-                    <Nav.Link href={ROUTER_PATH.STUDY_SET} as="span" active="active">
-                        <NavLink to={ROUTER_PATH.STUDY_SET}>
-                            {
-                                pathname === ROUTER_PATH.STUDY_SET
-                                    ? <Badge pill bg="primary">Study set</Badge>
-                                    : 'Study set'
-                            }
-                        </NavLink>
+                    <Nav.Link
+                        style={{cursor: 'pointer'}}
+                        as="span"
+                        href="#"
+                        active="active"
+                        onClick={() => history.push(ROUTER_PATH.STUDY_SET)}                    
+                    >
+                        {pathname === ROUTER_PATH.STUDY_SET
+                            ? <Badge pill bg="primary">Study set</Badge>
+                            : 'Study set'
+                        }
                     </Nav.Link>
 
                     {loadingOperator ?
@@ -62,16 +70,29 @@ const Header = (props) => {
                         : !_.isEmpty(operatorDatasnapshot) && (position?.admin || position?.collaborator) && 
 
                         <NavDropdown title="Dashboard" className="dashboard-dropdown" active="active">
-                            <NavDropdown.Item as="span" className="fw-bold">
-                                <NavLink to={ROUTER_PATH.DASHBOARD_USERS}>
-                                    <i className="fas fa-user"/> Users
-                                </NavLink>
+
+                            <NavDropdown.Item
+                                style={{cursor: 'pointer'}}
+                                as="span"
+                                href="#"
+                                className="fw-bold"
+                                onClick={() => history.push(ROUTER_PATH.DASHBOARD_USERS)}      
+                            >
+                                <i className="fas fa-user"/> Users
                             </NavDropdown.Item>
-                            <NavDropdown.Item as="span" className="fw-bold">
-                                <NavLink to={ROUTER_PATH.DASHBOARD_STUDYSET}>
-                                    <i className="fas fa-book-open"/> Study sets
-                                </NavLink>
+
+                            <NavDropdown.Divider />
+
+                            <NavDropdown.Item
+                                style={{cursor: 'pointer'}}
+                                as="span"
+                                href="#"
+                                className="fw-bold"
+                                onClick={() => history.push(ROUTER_PATH.DASHBOARD_STUDYSET)}      
+                            >
+                                <i className="fas fa-book-open"/> Study sets
                             </NavDropdown.Item>
+
                         </NavDropdown>
                     }
 
@@ -84,7 +105,11 @@ const Header = (props) => {
                         </Placeholder>
                         : _.isEmpty(user) ?
                             <Nav className="my-2 my-sm-0">
-                                <Nav.Link active="active"><SignIn /></Nav.Link>
+                                <Nav.Link 
+                                    as="span"
+                                    active="active"
+                                    href="#"
+                                ><SignIn /></Nav.Link>
                             </Nav>
                             :
                             <NavDropdown active="active" id="navbarScrollingDropdown" align="end" className="header-user-dropList"
@@ -109,7 +134,7 @@ const Header = (props) => {
                                     />
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item><SignOut /></NavDropdown.Item>
+                                <NavDropdown.Item href="#" as="span"><SignOut /></NavDropdown.Item>
                             </NavDropdown>
                     }
                 </Nav>
