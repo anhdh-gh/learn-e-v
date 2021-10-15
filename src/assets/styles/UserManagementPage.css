@@ -47,6 +47,7 @@
     margin-bottom: 0;
     height: 100%;
     word-break: break-word;
+    margin-top: 1rem;
 }
   
 .table-container .title-table {

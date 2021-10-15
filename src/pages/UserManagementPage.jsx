@@ -128,70 +128,68 @@ const UserManagementPage = (props) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <img src={showVEUser?.photoURL} alt="avata" className="w-100" />
-                    <div className="table-responsive h-100 mt-3">
-                        <table className="table table-bordered table-container">
-                            <thead className="title-table align-middle">
-                                <tr>
-                                    <th scope="col" colSpan="2">User information</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="fw-bold">
-                                    <td>Uid</td>
-                                    <td>{showVEUser?.uid}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Display name</td>
-                                    <td>{showVEUser?.displayName}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Email</td>
-                                    <td>{showVEUser?.email}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Position</td>
-                                    <td>
-                                        {showVEUser?.type === 'update' && myRules?.admin
-                                            ? <Form.Select style={{cursor: 'pointer'}} onChange={e => setUpdate(e.target.value)} size="sm" defaultValue={showVEUser?.admin ? 'Admin' : showVEUser?.collaborator ? 'Collaborator' : 'User'}>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Collaborator">Collaborator</option>
-                                                <option value="User">User</option>
-                                            </Form.Select>
-                                            : showVEUser?.admin
-                                                ? 'Admin'
-                                                : showVEUser?.collaborator
-                                                    ? 'Collaborator'
-                                                    : 'User'
-                                        }
-                                    </td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Family name</td>
-                                    <td>{showVEUser?.family_name}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Given name</td>
-                                    <td>{showVEUser?.given_name}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Locale</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.locale)}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Is anonymous</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isAnonymous.toString())}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Is newUser</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isNewUser.toString())}</td>
-                                </tr>
-                                <tr className="fw-bold">
-                                    <td>Verified email</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.verified_email?.toString())}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table className="table table-bordered table-container">
+                        <thead className="title-table align-middle">
+                            <tr>
+                                <th scope="col" colSpan="2">User information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="fw-bold">
+                                <td>Uid</td>
+                                <td>{showVEUser?.uid}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Display name</td>
+                                <td>{showVEUser?.displayName}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Email</td>
+                                <td>{showVEUser?.email}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Position</td>
+                                <td>
+                                    {showVEUser?.type === 'update' && myRules?.admin
+                                        ? <Form.Select style={{cursor: 'pointer'}} onChange={e => setUpdate(e.target.value)} size="sm" defaultValue={showVEUser?.admin ? 'Admin' : showVEUser?.collaborator ? 'Collaborator' : 'User'}>
+                                            <option value="Admin">Admin</option>
+                                            <option value="Collaborator">Collaborator</option>
+                                            <option value="User">User</option>
+                                        </Form.Select>
+                                        : showVEUser?.admin
+                                            ? 'Admin'
+                                            : showVEUser?.collaborator
+                                                ? 'Collaborator'
+                                                : 'User'
+                                    }
+                                </td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Family name</td>
+                                <td>{showVEUser?.family_name}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Given name</td>
+                                <td>{showVEUser?.given_name}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Locale</td>
+                                <td>{Utils.capitalizeFirstLetter(showVEUser?.locale)}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Is anonymous</td>
+                                <td>{Utils.capitalizeFirstLetter(showVEUser?.isAnonymous.toString())}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Is newUser</td>
+                                <td>{Utils.capitalizeFirstLetter(showVEUser?.isNewUser.toString())}</td>
+                            </tr>
+                            <tr className="fw-bold">
+                                <td>Verified email</td>
+                                <td>{Utils.capitalizeFirstLetter(showVEUser?.verified_email?.toString())}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     {showVEUser?.type === 'update' && 
                         <Button 
                             onClick={handleUpdate}
