@@ -7,6 +7,7 @@ import { useList } from 'react-firebase-hooks/database'
 import { auth, studySetDB } from '../config/firebase'
 import { Utils } from '../utils'
 import { useState } from "react"
+import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 const StudySetPage = (props) => {
 
@@ -71,6 +72,11 @@ const StudySetPage = (props) => {
                     </div>
                 </div>
             </div>
+
+            <MessengerCustomerChat
+                pageId="104997555249635"
+                appId="2621052224739729"
+            />
         </div>      
         <Footer/>  
     </>
