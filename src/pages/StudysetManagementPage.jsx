@@ -1,9 +1,10 @@
 import '../assets/styles/StudysetManagementPage.css'
-import { Footer, SearchBox, CardStudySet } from '../components'
+import { Footer, SearchBox, CardStudySet, Sider } from '../components'
 import { useState } from "react"
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
 import { userDB, studySetDB } from '../config/firebase'
+import { ROUTER_PATH } from '../constants'
 
 const StudysetManagementPage = (props) => {
     const [search, setSearch] = useState('')
@@ -27,47 +28,61 @@ const StudysetManagementPage = (props) => {
         : studysetList
 
     return <>
-        <div className="StudysetManagementPage-container">
+        <Sider siderItems={[
+            {
+                icon: 'fas fa-user',
+                name: 'Users',
+                route: ROUTER_PATH.DASHBOARD_USERS
+            },
+            {
+                icon: 'fas fa-book-open',
+                name: 'Study sets',
+                route: ROUTER_PATH.DASHBOARD_STUDYSET
+            },
+        ]}>
+            <div className="StudysetManagementPage-container">
 
-            {/* Phần các chức năng bên trên */}
-            <div className="func">
-                <div className="container-xl">
-                    <div className="row">
-                        <div className="col-sm">
-                            <p className="title mb-2 mb-sm-0 d-block d-sm-inline-block">Study set management</p>
-                        </div>
-                        <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-md-0">
-                            <SearchBox placeholder="Search studyset" value={search} onChange={e => setSearch(e.target.value)} />
+                {/* Phần các chức năng bên trên */}
+                <div className="func">
+                    <div className="container-xl">
+                        <div className="row">
+                            <div className="col-sm">
+                                <p className="title mb-2 mb-sm-0 d-block d-sm-inline-block">Study set management</p>
+                            </div>
+                            <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-md-0">
+                                <SearchBox placeholder="Search studyset" value={search} onChange={e => setSearch(e.target.value)} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="content py-3">
-                <div className="container-xl">
-                    <div className="row">
-                        {
-                            studysets?.map((item, index) =>
-                                <div className="col-md-6 col-lg-4 mb-3" key={item?.idStudyset}>
-                                    <CardStudySet
-                                        idAuthor={item.uid}
-                                        idStudyset={item.idStudyset}
-                                        title={item.title}
-                                        description={item.description}
-                                        lengthWordCart={item.wordCarts.length}
-                                        photoURL={item.photoURL}
-                                        displayName={item.given_name}
-                                        email={item.email}
-                                        showFooter={true}
-                                        showHeader={true}
-                                    />
-                                </div>
-                            )
-                        }
+                <div className="content py-3">
+                    <div className="container-xl">
+                        <div className="row">
+                            {
+                                studysets?.map((item, index) =>
+                                    <div className="col-md-6 col-lg-4 mb-3" key={item?.idStudyset}>
+                                        <CardStudySet
+                                            idAuthor={item.uid}
+                                            idStudyset={item.idStudyset}
+                                            title={item.title}
+                                            description={item.description}
+                                            lengthWordCart={item.wordCarts.length}
+                                            photoURL={item.photoURL}
+                                            displayName={item.given_name}
+                                            email={item.email}
+                                            showFooter={true}
+                                            showHeader={true}
+                                        />
+                                    </div>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>            
+        </Sider>
+
         <Footer />
     </>
 }

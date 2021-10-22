@@ -14,6 +14,7 @@ import WordCartSlide from './WordCartSlide'
 import ScrollToTop from './ScrollToTop'
 import MultipleChoiceQuestion from './MultipleChoiceQuestion'
 import MultipleChoiceTest from './MultipleChoiceTest'
+import Sider from './Sider'
 
 export {
     Header,
@@ -32,4 +33,5 @@ export {
     ScrollToTop,
     MultipleChoiceQuestion,
     MultipleChoiceTest,
+    Sider,
 }

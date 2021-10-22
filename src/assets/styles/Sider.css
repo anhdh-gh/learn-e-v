@@ -1,0 +1,41 @@
+.sider-container {
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #001529;
+    color: #FFF;
+    max-width: 100vw;
+    transition: all 0.2s;
+    z-index: 1029;
+}
+
+.sider-container:hover {
+    overflow: auto;
+}
+
+.sider-container .sider-nav {
+    flex-direction: column;
+}
+
+.sider-container .sider-nav .item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFF;
+}
+
+.sider-container .sider-nav .item:hover {
+    background-color: #4257b2;
+}
+
+.zoom {
+    position: fixed;
+    bottom: 0;
+    color: #FFF;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background-color: #002140;
+    cursor: pointer;
+    z-index: 1029;
+}
