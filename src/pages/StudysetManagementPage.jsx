@@ -49,7 +49,7 @@ const StudysetManagementPage = (props) => {
                             <div className="col-sm">
                                 <p className="title mb-2 mb-sm-0 d-block d-sm-inline-block">Study set management</p>
                             </div>
-                            <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-md-0">
+                            <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-sm-0">
                                 <SearchBox placeholder="Search studyset" value={search} onChange={e => setSearch(e.target.value)} />
                             </div>
                         </div>

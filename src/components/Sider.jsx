@@ -13,15 +13,18 @@ const Sider = (props) => {
     const [ zoom, setZoom ] = useState(window.innerWidth >= 786 ? true : false)
     const [ mobile, setMobile ] = useState(window.innerWidth < 576 ? true : false)
 
+    const handleResize = () => {
+        if(window.innerWidth < 576) {
+            setZoom(false)
+            setMobile(true)
+        }
+        else setMobile(false)
+    }
+
     useEffect(()=> {
-        window.addEventListener('resize', () => {
-            if(window.innerWidth < 576) {
-                setZoom(false)
-                setMobile(true)
-            }
-            else setMobile(false)
-        })
-    }, [mobile])
+        window.addEventListener('resize', handleResize)
+        return () => window.addEventListener('resize', handleResize)
+    }, [])
 
     return <>
         <div className={`sider-container mt-5 pt-2 ${mobile && !zoom ? 'd-none' : ''}`}>
