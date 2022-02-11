@@ -4,22 +4,21 @@ import { useState } from "react"
 const Pagination = (props) => {
 
     const items = props.children || []
-    const numberItem  = props.number_item || 3
-    const number_index = Math.ceil(items.length/numberItem)
+    const numberItem  = props.numberItem || 3
+    const [ numberIndex, setNumberIndex ] = useState(Math.ceil(items.length/numberItem))
     const [ currentIndex, setCurrentIndex ] = useState(1)
-
-    console.log(currentIndex)
 
     return <div className={props.className}>
         {items.filter((item, index) => {
             const max = currentIndex * numberItem - 1
             const min = max - numberItem + 1
-            return index >= min && index <= max
+            return (numberIndex === 1) || (index >= min && index <= max)
         })}
 
         <RbPagination className="mt-3 justify-content-center">
             <RbPagination.Prev disabled={currentIndex === 1} onClick={() => setCurrentIndex(currentIndex - 1)}/>
-            <RbPagination.Next disabled={currentIndex === number_index} onClick={() => setCurrentIndex(currentIndex + 1)}/>
+            <RbPagination.Item onClick={() => numberIndex === 1 ? setNumberIndex(Math.ceil(items.length/numberItem)) : setNumberIndex(1)}>{numberIndex === 1 ? 'Pagination' : 'All'}</RbPagination.Item>
+            <RbPagination.Next disabled={currentIndex === numberIndex} onClick={() => setCurrentIndex(currentIndex + 1)}/>
         </RbPagination>
     </div>
 }
@@ -30,11 +29,13 @@ export default Pagination
 
 /*
 - Cách sử dụng
-    <Pagination>
+    <Pagination className="" numberItem={number}>
         {items.map => <>item</>}
     </Pagination>
 
     => props.children: Là mảng các item
 
-- number_item: Số item hiển thị mỗi lần
+- numberItem: Số item hiển thị mỗi lần
+- numberIndex: Số trang được phân ra
+- currentIndex: Chỉ số của trang hiện tại
 */

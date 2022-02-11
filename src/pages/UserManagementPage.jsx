@@ -1,5 +1,5 @@
 import '../assets/styles/UserManagementPage.css'
-import { SearchBox, Footer, ModalConfirm, Sider } from '../components'
+import { SearchBox, Footer, ModalConfirm, Sider, Pagination } from '../components'
 import { Card, Badge, OverlayTrigger, Tooltip, Offcanvas, Form, Button } from 'react-bootstrap'
 import { useState } from "react"
 import { useList } from 'react-firebase-hooks/database'
@@ -73,7 +73,7 @@ const UserManagementPage = (props) => {
 
                 <div className="content pb-3">
                     <div className="container-xl">
-                        <div className="row">
+                        <Pagination className="row" numberItem={8}>
                             {
                                 users?.map(user => <div key={user?.uid} className="col-sm-6 col-md-4 col-lg-3 mt-3">
                                     <Card className="card-user">
@@ -118,8 +118,8 @@ const UserManagementPage = (props) => {
 
                                     </Card>
                                 </div>)
-                            }
-                        </div>
+                            }                                
+                        </Pagination>
                     </div>
                 </div>
 
