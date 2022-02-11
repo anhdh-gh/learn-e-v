@@ -1,5 +1,5 @@
 import '../assets/styles/HomePage.css'
-import { Footer, CardStudySet, UserInfo } from '../components'
+import { Footer, CardStudySet, UserInfo, Pagination } from '../components'
 import { Button } from 'react-bootstrap'
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
@@ -41,25 +41,26 @@ const HomePage = (props) => {
             <div className="main">
                 <div className="container-xl">
                     <h4 className="fw-bold mb-5 pb-3 border-4 border-bottom border-danger d-inline-block">Outstanding study sets</h4>
-                    <div className="row">
-                    {!loadingUser && !loadingStudyset && 
-                        studysets.map((item, index) => 
-                        <div className="col-md-6 col-lg-4 mb-3" key={item.idStudyset}>
-                            <CardStudySet
-                                idAuthor={item.uid}
-                                idStudyset={item.idStudyset}
-                                title={item.title}
-                                description={item.description}
-                                lengthWordCart={item.wordCarts.length}
-                                showHeader={true}
-                                photoURL={item.photoURL}
-                                displayName={item.given_name}
-                                email={item.email}
-                            />
-                        </div>                            
-                        )
-                    }
-                    </div>
+                    
+                    <Pagination className="row">
+                        {!loadingUser && !loadingStudyset && 
+                            studysets.map((item, index) => 
+                            <div className="col-md-6 col-lg-4 mb-3" key={item.idStudyset}>
+                                <CardStudySet
+                                    idAuthor={item.uid}
+                                    idStudyset={item.idStudyset}
+                                    title={item.title}
+                                    description={item.description}
+                                    lengthWordCart={item.wordCarts.length}
+                                    showHeader={true}
+                                    photoURL={item.photoURL}
+                                    displayName={item.given_name}
+                                    email={item.email}
+                                />
+                            </div>                            
+                            )
+                        }
+                    </Pagination>
 
                     <h4 className="fw-bold my-5 pb-3 border-4 border-bottom border-danger d-inline-block">Regular users</h4>
                     <Carousel interval={1000} variant="dark" controls={false} indicators={false}>

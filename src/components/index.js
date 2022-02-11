@@ -15,6 +15,7 @@ import ScrollToTop from './ScrollToTop'
 import MultipleChoiceQuestion from './MultipleChoiceQuestion'
 import MultipleChoiceTest from './MultipleChoiceTest'
 import Sider from './Sider'
+import Pagination from './Pagination'
 
 export {
     Header,
@@ -34,4 +35,5 @@ export {
     MultipleChoiceQuestion,
     MultipleChoiceTest,
     Sider,
+    Pagination,
 }

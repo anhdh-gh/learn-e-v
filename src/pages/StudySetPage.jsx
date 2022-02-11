@@ -1,5 +1,5 @@
 import '../assets/styles/StudySetPage.css'
-import { UserInfo, SearchBox, CardStudySet, Footer } from '../components'
+import { UserInfo, SearchBox, CardStudySet, Footer, Pagination } from '../components'
 import { Button } from 'react-bootstrap'
 import { ROUTER_PATH } from '../constants'
 import { NavLink } from "react-router-dom"
@@ -53,7 +53,7 @@ const StudySetPage = (props) => {
             {/* Phần hiển thị các study set */}
             <div className="studysets py-5">
                 <div className="container-xl">
-                    <div className="row">
+                    <Pagination className="row" numberItem={6}>
                     {
                         studysets.map((item, index) => 
                             <div className="col-md-6 col-lg-4 mb-3" key={item.id}>
@@ -68,7 +68,7 @@ const StudySetPage = (props) => {
                             </div>                            
                         )
                     }
-                    </div>
+                    </Pagination>
                 </div>
             </div>
         </div>      
