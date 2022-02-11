@@ -1,5 +1,5 @@
 import '../assets/styles/StudysetManagementPage.css'
-import { Footer, SearchBox, CardStudySet, Sider } from '../components'
+import { Footer, SearchBox, CardStudySet, Sider, Pagination } from '../components'
 import { useState } from "react"
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
@@ -58,7 +58,7 @@ const StudysetManagementPage = (props) => {
 
                 <div className="content py-3">
                     <div className="container-xl">
-                        <div className="row">
+                        <Pagination className="row" numberItem={6}>
                             {
                                 studysets?.map((item, index) =>
                                     <div className="col-md-6 col-lg-4 mb-3" key={item?.idStudyset}>
@@ -77,7 +77,7 @@ const StudysetManagementPage = (props) => {
                                     </div>
                                 )
                             }
-                        </div>
+                        </Pagination>
                     </div>
                 </div>
             </div>            
