@@ -7,12 +7,16 @@ import _ from "lodash"
 import { v4 as uuidv4 } from "uuid"
 import { Notify, Firebase } from "../utils"
 import { useHistory } from "react-router-dom"
+import { Utils } from "../utils"
 
 const CeStudySet = (props) => {
     const { idAuthor, id, studysetProp } = props
     const history = useHistory()
     const [ y, setY ] = useState(window.scrollY)
     const strickyRef = useRef(null)
+
+    const [ suggestions, setSuggestions ] = useState([])
+    const [ timer, setTimer ] = useState(null)
 
     const createwordCard = (key, value) => ({
         id: uuidv4(),
@@ -95,10 +99,23 @@ const CeStudySet = (props) => {
     }
 
     const handlewordCardChange = (index, value, attribute) => {
+        // Xóa timer cũ
+        clearTimeout(timer)
+
+        // Xõa gợi ý trước
+        setSuggestions([])
+
+        // Set value cho input
         const newStudyset = _.cloneDeep(studyset)
         newStudyset.wordCards[index][attribute] = value
         newStudyset.wordCards[index][`error${attribute}`] = ''
         setStudyset(newStudyset)
+
+        if(attribute === 'key')
+            setTimer(setTimeout(() => {
+                // Gọi api để lấy nghĩa của từ
+                Utils.getDefinition(value).then(data => setSuggestions({index, data}))
+            }, 1000)) // delay 1 giây coi như người dùng nhập xong
     }
 
     const onDragEnd = (result) => {
@@ -224,6 +241,8 @@ const CeStudySet = (props) => {
                                                             error={item.errorvalue}
                                                             onChange={e => handlewordCardChange(index, e.target.value, 'value')}
                                                         />
+
+                                                        {index === suggestions?.index && suggestions?.data?.map((suggestion, idx) => <div key={`${item.id}-${idx}`} className="suggestion mt-2 p-2" onClick={e => handlewordCardChange(index, suggestion, 'value')}>{suggestion}</div>)}
                                                     </div>
                                                 </div>
 

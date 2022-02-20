@@ -66,3 +66,13 @@
     padding: 2rem .75rem;
     cursor: initial;
 }
+
+.CeStudySet-container .wordCards .wordCard-input .input-type .suggestion {
+    cursor: pointer;
+    background-color: #f6f7fb;
+    font-weight: bold;
+}
+
+.CeStudySet-container .wordCards .wordCard-input .input-type .suggestion:hover {
+    background-color: #FFCD1F;
+}
