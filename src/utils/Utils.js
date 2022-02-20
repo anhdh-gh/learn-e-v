@@ -21,7 +21,7 @@ const Utils = {
                 const { status } = err.response
                 switch(status) {
                     case 404:
-                        console.clear()
+                        // console.clear()
                         break;
                     default:
                         console.log(err)

@@ -9,7 +9,6 @@ const AudioWord = (props) => {
     const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis()
     const [wordAuidoSpeeking, setWordAuidoSpeeking] = useState(false)
 
-
     if (word.info && word.info instanceof Promise) {
         // Trích xuất audio
         word.info.then(info => {
@@ -53,6 +52,11 @@ const AudioWord = (props) => {
             word.audio.play()
     }, [wordAuidoSpeeking, word.audio])
 
+    const filterVoice = (lang) => {
+        const voicesFilter = voices.filter(voice => voice.lang === lang)
+        return voicesFilter && voicesFilter.length > 0 ? voicesFilter[0] : voices[0]
+    }
+
     const handleClickAudio = e => {
         e.stopPropagation()
 
@@ -62,7 +66,12 @@ const AudioWord = (props) => {
             if (speaking)
                 cancel()
             else
-                speak({ text: word.text, voice: word.type === 'key' ? voices[2] : voices[93] })
+                speak({
+                    text: word.text, 
+                    voice: word.type === 'key' 
+                    ? filterVoice("en-US")
+                    : filterVoice("vi-VN")
+                })
     }
 
     return !supported
