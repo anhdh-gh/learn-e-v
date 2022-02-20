@@ -114,7 +114,7 @@ const CeStudySet = (props) => {
         if(attribute === 'key')
             setTimer(setTimeout(() => {
                 // Gọi api để lấy nghĩa của từ
-                Utils.getDefinition(value).then(data => setSuggestions({index, data}))
+                Utils.getDefinition(value).then(data => setSuggestions({index, data: data.filter(definition => definition !== newStudyset.wordCards[index].value.trim().toLowerCase()).map(definition => Utils.capitalizeFirstLetter(definition))}))
             }, 1000)) // delay 1 giây coi như người dùng nhập xong
     }
 
