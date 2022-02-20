@@ -7,7 +7,7 @@ const AudioWord = (props) => {
 
     const { word } = props
     const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis()
-    const [wordAuidoSpeeking, setWordAuidoSpeeking] = useState(false)
+    const [ wordAuidoSpeeking, setWordAuidoSpeeking ] = useState(false)
 
     if (word.info && word.info instanceof Promise) {
         // Trích xuất audio
@@ -53,7 +53,7 @@ const AudioWord = (props) => {
     }, [wordAuidoSpeeking, word.audio])
 
     const filterVoice = (lang) => {
-        const voicesFilter = voices.filter(voice => voice.lang === lang)
+        const voicesFilter = voices.filter(voice => voice.lang.trim().toLowerCase().includes(lang.trim().toLowerCase()))
         return voicesFilter && voicesFilter.length > 0 ? voicesFilter[0] : voices[0]
     }
 
@@ -85,9 +85,3 @@ const AudioWord = (props) => {
 }
 
 export default AudioWord
-
-/**
- * const { voices } = useSpeechSynthesis()
- * voices[2]: "en-US"
- * voices[93]: "vi-VN"
-*/
