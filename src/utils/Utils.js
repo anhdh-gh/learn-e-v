@@ -12,17 +12,19 @@ const Utils = {
     },
 
     handleErrorFetchApiByAxios: (error) => {
-        if(error.response) {
-            const { status } = error.response
-            switch(status) {
-                case 429:
-                case 404:
-                    console.clear()
-                    break;
-                default:
-                    console.log(error)
-            }
-        }
+        // if(error.response) {
+        //     const { status } = error.response
+        //     switch(status) {
+        //         case 429:
+        //         case 404:
+        //             console.clear()
+        //             break;
+        //         default:
+        //             console.log(error)
+        //     }
+        // }
+
+        console.clear()
     },
 
     // Lấy nghĩa của từ
