@@ -14,7 +14,7 @@ const CardStudySet = (props) => {
         idStudyset,
         title,
         description,
-        lengthWordCart,
+        lengthwordCard,
         showHeader,
         showFooter,
         photoURL,
@@ -50,7 +50,7 @@ const CardStudySet = (props) => {
                     }
                 </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                    <Badge pill bg="warning" text="dark">Terms: {lengthWordCart}</Badge>
+                    <Badge pill bg="warning" text="dark">Terms: {lengthwordCard}</Badge>
                 </Card.Subtitle>
                 <Card.Text>
                     {

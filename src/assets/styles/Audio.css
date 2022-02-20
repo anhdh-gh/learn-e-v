@@ -1,0 +1,13 @@
+.audio:hover {
+    background-color: initial;
+    color: #ffcd1f;
+}
+
+.audio:active {
+    transform: scale(0.8)
+}
+
+.audio-play {
+    background-color: initial;
+    color: #ffcd1f;
+}

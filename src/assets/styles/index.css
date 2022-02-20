@@ -21,3 +21,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.flex-center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.white-space_pre-line {
+  white-space: pre-line !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

@@ -1,0 +1,52 @@
+.wordCards {
+    background-color: #f6f7fb;
+    padding: 2rem 0;
+}
+
+.wordCards .info {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.wordCards .list {
+    font-weight: bold;
+    background-color: #FFF;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    margin-bottom: 1rem;
+}
+
+.wordCards .list:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.wordCards .list .index,
+.wordCards .list .term,
+.wordCards .list .definition {
+    overflow: auto;
+}
+
+.wordCards .list .index {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.wordCards .list .tern-container {
+    border: 1px solid #DDD;
+    border-bottom: 0;
+    border-top: 0;
+}
+
+@media (max-width: 576px) {
+    .wordCards .list .tern-container {
+        border: 1px solid #DDD;
+        border-left: 0;
+        border-right: 0;  
+    }
+}

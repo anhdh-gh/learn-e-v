@@ -22,7 +22,7 @@ const TestStudySetPage = (props) => {
 
     const studyset = Utils.convertDataSnapshotToObject(studysetDataSnapshot)
 
-    const test = Utils.convertWordCartsToTest(studyset.wordCarts)
+    const test = Utils.convertwordCardsToTest(studyset.wordCards)
 
     return loadingUser || loadingStudyset ? <></> :
     _.isEmpty(author) ? <PageNotFound/> :
