@@ -17,6 +17,7 @@ import MultipleChoiceTest from './MultipleChoiceTest'
 import Sider from './Sider'
 import Pagination from './Pagination'
 import AudioWord from './AudioWord'
+import WordCardList from './WordCardList'
 
 export {
     Header,
@@ -38,4 +39,5 @@ export {
     Sider,
     Pagination,
     AudioWord,
+    WordCardList,
 }
