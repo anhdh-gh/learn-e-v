@@ -15,6 +15,7 @@ const Utils = {
         if(error.response) {
             const { status } = error.response
             switch(status) {
+                case 429:
                 case 404:
                     console.clear()
                     break;
