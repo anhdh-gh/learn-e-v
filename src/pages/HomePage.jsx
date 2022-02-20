@@ -38,46 +38,58 @@ const HomePage = (props) => {
                 </div>
             </div>
 
-            <div className="main">
-                <div className="container-xl">
-                    <h4 className="fw-bold mb-5 pb-3 border-4 border-bottom border-danger d-inline-block">Outstanding study sets</h4>
-                    
-                    <Pagination className="row">
-                        {!loadingUser && !loadingStudyset && 
-                            studysets.map((item, index) => 
-                            <div className="col-md-6 col-lg-4 mb-3" key={item.idStudyset}>
-                                <CardStudySet
-                                    idAuthor={item.uid}
-                                    idStudyset={item.idStudyset}
-                                    title={item.title}
-                                    description={item.description}
-                                    lengthWordCart={item.wordCarts.length}
-                                    showHeader={true}
-                                    photoURL={item.photoURL}
-                                    displayName={item.given_name}
-                                    email={item.email}
-                                />
-                            </div>                            
-                            )
-                        }
-                    </Pagination>
-
-                    <h4 className="fw-bold my-5 pb-3 border-4 border-bottom border-danger d-inline-block">Regular users</h4>
-                    <Carousel interval={1000} variant="dark" controls={false} indicators={false}>
+            {
+                !loadingUser && !loadingStudyset &&
+                <div className="main">
+                    <div className="container-xl">
                         {
-                            users.map((user, index) => <Carousel.Item key={user.uid}>
-                                <UserInfo
-                                    className="justify-content-center"
-                                    photoURL={user.photoURL}
-                                    displayName={user.displayName}
-                                    email={user.email}
-                                />
-                            </Carousel.Item>
-                            )
+                            studysets.length > 0 && 
+                            <>
+                                <h4 className="fw-bold mb-5 pb-3 border-4 border-bottom border-danger d-inline-block">Outstanding study sets</h4>
+                                
+                                <Pagination className="row">
+                                    {   
+                                        studysets.map((item, index) => 
+                                        <div className="col-md-6 col-lg-4 mb-3" key={item.idStudyset}>
+                                            <CardStudySet
+                                                idAuthor={item.uid}
+                                                idStudyset={item.idStudyset}
+                                                title={item.title}
+                                                description={item.description}
+                                                lengthwordCard={item.wordCards.length}
+                                                showHeader={true}
+                                                photoURL={item.photoURL}
+                                                displayName={item.given_name}
+                                                email={item.email}
+                                            />
+                                        </div>                            
+                                        )
+                                    }
+                                </Pagination>
+                            </>
                         }
-                    </Carousel>
+
+                        {
+                            users.length > 0 && <>
+                                <h4 className="fw-bold my-5 pb-3 border-4 border-bottom border-danger d-inline-block">Regular users</h4>
+                                <Carousel interval={1000} variant="dark" controls={false} indicators={false}>
+                                    {
+                                        users.map((user, index) => <Carousel.Item key={user.uid}>
+                                            <UserInfo
+                                                className="justify-content-center"
+                                                photoURL={user.photoURL}
+                                                displayName={user.displayName}
+                                                email={user.email}
+                                            />
+                                        </Carousel.Item>
+                                        )
+                                    }
+                                </Carousel>                            
+                            </>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
         </div>    
         <Footer/>    
     </>

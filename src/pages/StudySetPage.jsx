@@ -22,7 +22,7 @@ const StudySetPage = (props) => {
     ? Utils.convertDataSnapshotToArray(studySetDataSnapshot).filter(item => 
         item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
         || item.description.trim().toLowerCase().includes(search.trim().toLowerCase())
-        || ('' + item.wordCarts.length).trim().toLowerCase().includes(search.trim().toLowerCase())
+        || ('' + item.wordCards.length).trim().toLowerCase().includes(search.trim().toLowerCase())
     )
     : Utils.convertDataSnapshotToArray(studySetDataSnapshot)
 
@@ -62,7 +62,7 @@ const StudySetPage = (props) => {
                                     idStudyset={item.id}
                                     title={item.title}
                                     description={item.description}
-                                    lengthWordCart={item.wordCarts.length}
+                                    lengthwordCard={item.wordCards.length}
                                     showFooter={true}
                                 />
                             </div>                            

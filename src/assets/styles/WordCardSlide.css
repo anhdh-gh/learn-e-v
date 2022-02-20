@@ -1,20 +1,20 @@
-.WordCartSlide-container > .cart {
+.WordCardSlide-container > .cart {
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     border-radius: 1rem;
     cursor: pointer;
 }
 
-.WordCartSlide-container > .cart:hover {
+.WordCardSlide-container > .cart:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
-.WordCartSlide-container .carousel-inner {
+.WordCardSlide-container .carousel-inner {
     border-radius: 1rem;
 }
 
-.WordCartSlide-container .item-front,
-.WordCartSlide-container .item-back {
+.WordCardSlide-container .item-front,
+.WordCardSlide-container .item-back {
     height: 340px;
     cursor: pointer;
     border-radius: 1rem;
@@ -26,14 +26,14 @@
     font-weight: bold;
  }
 
-.WordCartSlide-container .item-front > div,
-.WordCartSlide-container .item-back > div {
+.WordCardSlide-container .item-front > div,
+.WordCardSlide-container .item-back > div {
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
 }
 
-.WordCartSlide-container .control {
+.WordCardSlide-container .control {
     margin-top: 1rem;
     display: flex;
     justify-content: center;
@@ -42,16 +42,16 @@
     white-space: nowrap;
 }
 
-.WordCartSlide-container .control > i:hover {
+.WordCardSlide-container .control > i:hover {
     color: #ffcd1f;
     cursor: pointer;
 }
 
-.WordCartSlide-container .control > i:active {
+.WordCardSlide-container .control > i:active {
     transform: translate(-0.5px, 0.5px);
 }
 
-.WordCartSlide-container .control > span {
+.WordCardSlide-container .control > span {
     overflow: auto;
     font-weight: 700;
 }

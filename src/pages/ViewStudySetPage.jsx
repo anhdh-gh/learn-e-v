@@ -1,5 +1,5 @@
 import '../assets/styles/ViewStudySetPage.css'
-import { Footer, WordCartSlide, UserInfo } from '../components'
+import { Footer, WordCardSlide, UserInfo, AudioWord } from '../components'
 import { useParams, useHistory } from 'react-router'
 import { userDB, studySetDB } from '../config/firebase'
 import { useList } from 'react-firebase-hooks/database'
@@ -10,6 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { ROUTER_PATH } from '../constants'
 
 const ViewStudySetPage = (props) => {
+
     const history = useHistory()
 
     const { idAuthor, idStudyset } = useParams()
@@ -24,7 +25,7 @@ const ViewStudySetPage = (props) => {
         : ''
     )
 
-    const studyset = Utils.convertDataSnapshotToObject(studysetDataSnapshot)
+    const studyset = Utils.getInforStudyset(Utils.convertDataSnapshotToObject(studysetDataSnapshot))
 
     return loadingUser || loadingStudyset ? <></> :
     _.isEmpty(author) ? <PageNotFound/> :
@@ -59,7 +60,7 @@ const ViewStudySetPage = (props) => {
                         </div>
                     </div>
                     <div className="col-md-10">
-                        <WordCartSlide wordCarts={studyset.wordCarts}/>
+                        <WordCardSlide wordCards={studyset.wordCards}/>
                     </div>
                 </div>
 
@@ -73,27 +74,29 @@ const ViewStudySetPage = (props) => {
                 </div>
             </div>
 
-            <div className="wordCarts">
+            <div className="wordCards">
                 <div className="container-xl">
-                    <h4 className="info">Terms in this set ({studyset.wordCarts.length})</h4>
+                    <h4 className="info">Terms in this set ({studyset.wordCards.length})</h4>
                     {
-                        studyset.wordCarts.map((item, index) => 
-                            <div className="list" key={index}>
+                        studyset.wordCards.map((wordCard, index) => 
+                            <div className="list white-space_pre-line" key={index}>
                                 <div className="row">
                                     <div className="col-sm-1 pb-sm-0 pb-2">
                                         <div className="index">
                                             <div>{index+1}</div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-5 py-sm-0 py-2 tern-container">
-                                        <div className="term">
-                                            {item.key}
+                                    <div className="col-sm-5 py-sm-0 py-2 tern-container flex-center-vertical">
+                                        <div className="term flex-grow-1">
+                                            {wordCard.key.text}
                                         </div>
+                                        <AudioWord className="ps-2 align-self-start" word={{...wordCard.key, type: 'key'}}/>
                                     </div>
-                                    <div className="col-sm-6 pt-sm-0 pt-2">
-                                        <div className="definition">
-                                            {item.value}
+                                    <div className="col-sm-6 pt-sm-0 pt-2 flex-center-vertical">
+                                        <div className="definition flex-grow-1">
+                                            {wordCard.value.text}
                                         </div>
+                                        <AudioWord className="ps-2 align-self-start" word={{...wordCard.value, type: 'value'}}/>
                                     </div>
                                 </div>
                             </div>                              

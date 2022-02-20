@@ -23,7 +23,7 @@ const StudysetManagementPage = (props) => {
         ? studysetList.filter(item =>
             item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
             || item.description.trim().toLowerCase().includes(search.trim().toLowerCase())
-            || ('' + item.wordCarts.length).trim().toLowerCase().includes(search.trim().toLowerCase())
+            || ('' + item.wordCards.length).trim().toLowerCase().includes(search.trim().toLowerCase())
         )
         : studysetList
 
@@ -67,7 +67,7 @@ const StudysetManagementPage = (props) => {
                                             idStudyset={item.idStudyset}
                                             title={item.title}
                                             description={item.description}
-                                            lengthWordCart={item.wordCarts.length}
+                                            lengthwordCard={item.wordCards.length}
                                             photoURL={item.photoURL}
                                             displayName={item.given_name}
                                             email={item.email}

@@ -23,30 +23,30 @@
     border-bottom: .3125rem solid #3ccfcf;
 }
 
-.CeStudySet-container .wordCarts {
+.CeStudySet-container .wordCards {
     background-color: #f6f7fb;
     min-height: 100vh;
 }
-.CeStudySet-container .wordCarts .wordCart-input {
+.CeStudySet-container .wordCards .wordCard-input {
     border-radius: .5rem;
     cursor: move;
     position: relative;
     background-color: #FFF;
 }
 
-.CeStudySet-container .wordCarts .wordCart-input > .header {
+.CeStudySet-container .wordCards .wordCard-input > .header {
     display: flex;
     justify-content: space-between;
     padding: .75rem;
     border-bottom: 2px solid #f6f7fb;
 }
 
-.CeStudySet-container .wordCarts .wordCart-input > .header .drag-icon {
+.CeStudySet-container .wordCards .wordCard-input > .header .drag-icon {
     color: #CCC;
     padding: 0 2.5625rem;
 }   
 
-.CeStudySet-container .wordCarts .wordCart-input > .header .index {
+.CeStudySet-container .wordCards .wordCard-input > .header .index {
     color: #939bb4;
     font-weight: 700;
     font-size: 1rem;
@@ -54,15 +54,15 @@
     line-height: 1.5;
 }
 
-.CeStudySet-container .wordCarts .wordCart-input > .header .delete-icon {
+.CeStudySet-container .wordCards .wordCard-input > .header .delete-icon {
     cursor: pointer;
 }
 
-.CeStudySet-container .wordCarts .wordCart-input > .header .drag-icon:hover {
+.CeStudySet-container .wordCards .wordCard-input > .header .drag-icon:hover {
     color: #FFCD1F;
 }
 
-.CeStudySet-container .wordCarts .wordCart-input .input-type {
+.CeStudySet-container .wordCards .wordCard-input .input-type {
     padding: 2rem .75rem;
     cursor: initial;
 }

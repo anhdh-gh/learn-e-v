@@ -10,12 +10,13 @@ import CardStudySet from './CardStudySet'
 import ModalConfirm from './ModalConfirm'
 import Footer from './Footer'
 import CeStudySet from './CeStudySet'
-import WordCartSlide from './WordCartSlide'
+import WordCardSlide from './WordCardSlide'
 import ScrollToTop from './ScrollToTop'
 import MultipleChoiceQuestion from './MultipleChoiceQuestion'
 import MultipleChoiceTest from './MultipleChoiceTest'
 import Sider from './Sider'
 import Pagination from './Pagination'
+import AudioWord from './AudioWord'
 
 export {
     Header,
@@ -30,10 +31,11 @@ export {
     ModalConfirm,
     Footer,
     CeStudySet,
-    WordCartSlide,
+    WordCardSlide,
     ScrollToTop,
     MultipleChoiceQuestion,
     MultipleChoiceTest,
     Sider,
     Pagination,
+    AudioWord,
 }

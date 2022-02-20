@@ -14,7 +14,7 @@ const CeStudySet = (props) => {
     const [ y, setY ] = useState(window.scrollY)
     const strickyRef = useRef(null)
 
-    const createWordCart = (key, value) => ({
+    const createwordCard = (key, value) => ({
         id: uuidv4(),
         key: key ? key : '',
         value: value ? value : '',
@@ -31,9 +31,9 @@ const CeStudySet = (props) => {
             value: studysetProp ? studysetProp.description : '',
             error: ''
         },
-        wordCarts: studysetProp
-            ? studysetProp.wordCarts.map(item => createWordCart(item.key, item.value))
-            : [createWordCart('', ''), createWordCart('', ''), createWordCart('', '')]
+        wordCards: studysetProp
+            ? studysetProp.wordCards.map(item => createwordCard(item.key, item.value))
+            : [createwordCard('', ''), createwordCard('', ''), createwordCard('', '')]
     })
 
     const validate = () => {
@@ -41,10 +41,10 @@ const CeStudySet = (props) => {
         const newStudyset = _.cloneDeep(studyset)
         newStudyset.title.value = newStudyset.title.value.trim()
         newStudyset.description.value = newStudyset.description.value.trim()
-        newStudyset.wordCarts = newStudyset.wordCarts
+        newStudyset.wordCards = newStudyset.wordCards
             .map(item => ({ ...item, key: item.key.trim(), value: item.value.trim() }))
 
-        const { title, description, wordCarts } = newStudyset
+        const { title, description, wordCards } = newStudyset
 
         if (!title.value) {
             title.error = 'Title cannot be left blank!'
@@ -55,7 +55,7 @@ const CeStudySet = (props) => {
             res = false
         }
 
-        for (const item of wordCarts) {
+        for (const item of wordCards) {
             if (!item.key) {
                 item.errorkey = 'Term cannot be left blank!'
                 res = false
@@ -74,7 +74,7 @@ const CeStudySet = (props) => {
         return {
             title: studyset.title.value.trim(),
             description: studyset.description.value.trim(),
-            wordCarts: studyset.wordCarts.map(item => ({key: item.key.trim(), value: item.value.trim()}))
+            wordCards: studyset.wordCards.map(item => ({key: item.key.trim(), value: item.value.trim()}))
         }
     }
 
@@ -94,10 +94,10 @@ const CeStudySet = (props) => {
         }
     }
 
-    const handleWordCartChange = (index, value, attribute) => {
+    const handlewordCardChange = (index, value, attribute) => {
         const newStudyset = _.cloneDeep(studyset)
-        newStudyset.wordCarts[index][attribute] = value
-        newStudyset.wordCarts[index][`error${attribute}`] = ''
+        newStudyset.wordCards[index][attribute] = value
+        newStudyset.wordCards[index][`error${attribute}`] = ''
         setStudyset(newStudyset)
     }
 
@@ -107,10 +107,10 @@ const CeStudySet = (props) => {
         const startIndex = source.index
         const endIndex = destination.index
 
-        const newWordCarts = _.cloneDeep(studyset.wordCarts)
-        const [ removed ] = newWordCarts.splice(startIndex, 1)
-        newWordCarts.splice(endIndex, 0, removed)
-        setStudyset({...studyset, wordCarts: newWordCarts})
+        const newwordCards = _.cloneDeep(studyset.wordCards)
+        const [ removed ] = newwordCards.splice(startIndex, 1)
+        newwordCards.splice(endIndex, 0, removed)
+        setStudyset({...studyset, wordCards: newwordCards})
     }
 
     useEffect(() => {
@@ -178,16 +178,16 @@ const CeStudySet = (props) => {
             </div>
         </div>
 
-        <div className="wordCarts py-4">
+        <div className="wordCards py-4">
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="droppable">
                     {(provided, snapshot) =>
                         <div className="container-xl" {...provided.droppableProps} ref={provided.innerRef}>
                             {
-                                studyset.wordCarts.map((item, index) =>
+                                studyset.wordCards.map((item, index) =>
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided, snapshot) =>
-                                            <div className="wordCart-input mb-4" key={item.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={{ ...provided.draggableProps.style }}>
+                                            <div className="wordCard-input mb-4" key={item.id} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={{ ...provided.draggableProps.style }}>
                                                 <div className="header">
                                                     <span className="index">{index + 1}</span>
                                                     <span className="ms-auto drag-icon"><i className="fas fa-grip-lines" /></span>
@@ -197,7 +197,7 @@ const CeStudySet = (props) => {
                                                             bg="danger" className="delete-icon"
                                                             onClick={e => setStudyset({
                                                                 ...studyset,
-                                                                wordCarts: [...studyset.wordCarts.filter((item, i) => studyset.wordCarts.length > 3 ? i !== index : true)]
+                                                                wordCards: [...studyset.wordCards.filter((item, i) => studyset.wordCards.length > 3 ? i !== index : true)]
                                                             })}
                                                         ><i className="fas fa-trash-alt fs-6" /></Badge>
                                                     </OverlayTrigger>
@@ -211,7 +211,7 @@ const CeStudySet = (props) => {
                                                             placeholder='Enter term'
                                                             value={item.key}
                                                             error={item.errorkey}
-                                                            onChange={e => handleWordCartChange(index, e.target.value, 'key')}
+                                                            onChange={e => handlewordCardChange(index, e.target.value, 'key')}
                                                         />
                                                     </div>
 
@@ -222,7 +222,7 @@ const CeStudySet = (props) => {
                                                             placeholder='Enter definition'
                                                             value={item.value}
                                                             error={item.errorvalue}
-                                                            onChange={e => handleWordCartChange(index, e.target.value, 'value')}
+                                                            onChange={e => handlewordCardChange(index, e.target.value, 'value')}
                                                         />
                                                     </div>
                                                 </div>
@@ -244,7 +244,7 @@ const CeStudySet = (props) => {
                     className="fw-bold d-block d-sm-inline-block mx-auto"
                     onClick={e => setStudyset({
                         ...studyset,
-                        wordCarts: [...studyset.wordCarts, { id: uuidv4(), key: '', value: '' }]
+                        wordCards: [...studyset.wordCards, { id: uuidv4(), key: '', value: '' }]
                     })}
                 >
                     <i className="fas fa-plus"></i> Add card

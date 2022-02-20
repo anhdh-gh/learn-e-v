@@ -1,3 +1,6 @@
+import { API_ENDPOINT } from '../constants'
+import axios from 'axios'
+
 const Utils = {
     convertDataSnapshotToObject: dataSnapshot => {
         const obj = {}
@@ -6,6 +9,42 @@ const Utils = {
             return item
         })
         return obj
+    },
+
+    getInforWord: async (word) => {
+        try {
+            const res = await axios.get(`${API_ENDPOINT.FREE_DICTIONARY_API}/${word}`)
+            return res.data
+        } 
+        catch (err) {
+            if(err.response) {
+                const { status } = err.response
+                switch(status) {
+                    case 404:
+                        console.clear()
+                        break;
+                    default:
+                        console.log(err)
+                }
+            }
+        }
+    },
+
+    // Lấy toàn bộ thông tin của các key và value (bao gồm nghĩa, phát âm, từ loại,... ) thông qua api
+    getInforStudyset: studyset => {
+        if(studyset.wordCards)
+            studyset.wordCards = studyset.wordCards?.map(wordCard => ({
+                key: {
+                    text: wordCard.key,
+                    info: Utils.getInforWord(wordCard.key)
+                },
+                value: {
+                    text: wordCard.value,
+                    info: Utils.getInforWord(wordCard.value)
+                }
+            }))
+
+        return studyset
     },
 
     convertDataSnapshotToArray: (object) => {
@@ -55,18 +94,18 @@ const Utils = {
         return obj
     },
 
-    convertWordCartsToTest: wordCarts => {
-        if(wordCarts !== undefined) {
-            const numberOfAnswers = (wordCarts.length < 4) ? wordCarts.length : 4
-            const test = wordCarts.map((item, index) => ({
+    convertwordCardsToTest: wordCards => {
+        if(wordCards !== undefined) {
+            const numberOfAnswers = (wordCards.length < 4) ? wordCards.length : 4
+            const test = wordCards.map((item, index) => ({
                 id: index,
                 question: item.key,
                 correct: item.value,
                 choice: '',
                 answers: Utils.shuffle([
                     item.value,
-                    ...Utils.getRandom_K_number_unique(0, wordCarts.length-1, numberOfAnswers-1, [index], Utils.getRandomIntInclusive)
-                    .map(item => wordCarts[item].value)
+                    ...Utils.getRandom_K_number_unique(0, wordCards.length-1, numberOfAnswers-1, [index], Utils.getRandomIntInclusive)
+                    .map(item => wordCards[item].value)
                 ]) 
             }))
             return test            

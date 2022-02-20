@@ -48,17 +48,17 @@
     word-wrap: break-word;
 }
 
-.ViewStudySetPage-container > .wordCarts {
+.ViewStudySetPage-container > .wordCards {
     background-color: #f6f7fb;
     padding: 2rem 0;
 }
 
-.ViewStudySetPage-container > .wordCarts .info {
+.ViewStudySetPage-container > .wordCards .info {
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
 
-.ViewStudySetPage-container > .wordCarts .list {
+.ViewStudySetPage-container > .wordCards .list {
     font-weight: bold;
     background-color: #FFF;
     padding: 1rem;
@@ -68,18 +68,18 @@
     margin-bottom: 1rem;
 }
 
-.ViewStudySetPage-container > .wordCarts .list:hover {
+.ViewStudySetPage-container > .wordCards .list:hover {
     transform: scale(1.01);
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
-.ViewStudySetPage-container > .wordCarts .list .index,
-.ViewStudySetPage-container > .wordCarts .list .term,
-.ViewStudySetPage-container > .wordCarts .list .definition {
+.ViewStudySetPage-container > .wordCards .list .index,
+.ViewStudySetPage-container > .wordCards .list .term,
+.ViewStudySetPage-container > .wordCards .list .definition {
     overflow: auto;
 }
 
-.ViewStudySetPage-container > .wordCarts .list .index {
+.ViewStudySetPage-container > .wordCards .list .index {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -87,14 +87,14 @@
     height: 100%;
 }
 
-.ViewStudySetPage-container > .wordCarts .list .tern-container {
+.ViewStudySetPage-container > .wordCards .list .tern-container {
     border: 1px solid #DDD;
     border-bottom: 0;
     border-top: 0;
 }
 
 @media (max-width: 576px) {
-    .ViewStudySetPage-container > .wordCarts .list .tern-container {
+    .ViewStudySetPage-container > .wordCards .list .tern-container {
         border: 1px solid #DDD;
         border-left: 0;
         border-right: 0;  

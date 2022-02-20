@@ -5,7 +5,7 @@ const MultipleChoiceQuestion = (props) => {
     const { id, question, correct, answers } = props.testItem
     const { showResult } = props
 
-    return <div className="mb-3">
+    return <div className="mb-3 white-space_pre-line">
         <Form>
             <p className={`fw-bold text-break ${
                 showResult
