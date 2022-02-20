@@ -11,23 +11,34 @@ const Utils = {
         return obj
     },
 
+    handleErrorFetchApiByAxios: (error) => {
+        if(error.response) {
+            const { status } = error.response
+            switch(status) {
+                case 404:
+                    console.clear()
+                    break;
+                default:
+                    console.log(error)
+            }
+        }
+    },
+
+    // Lấy nghĩa của từ
+    getDefinition: async (term, from = "auto", to = "vi") => {
+        try {
+            const res = await axios.get(`${API_ENDPOINT.GOOGLE_TRANSLATE}?client=gtx&sl=${from}&tl=${to}&dt=t&q=${term}`)
+            return res.data[0][0].filter(definition => definition && typeof definition === 'string').map(definition => definition.trim().toLowerCase()).filter(definition => definition !== term.trim().toLowerCase()).map(definition => Utils.capitalizeFirstLetter(definition))
+        } 
+        catch (err) { Utils.handleErrorFetchApiByAxios(err) }
+    },
+
     getInforWord: async (word) => {
         try {
             const res = await axios.get(`${API_ENDPOINT.FREE_DICTIONARY_API}/${word}`)
             return res.data
         } 
-        catch (err) {
-            if(err.response) {
-                const { status } = err.response
-                switch(status) {
-                    case 404:
-                        console.clear()
-                        break;
-                    default:
-                        console.log(err)
-                }
-            }
-        }
+        catch (err) { Utils.handleErrorFetchApiByAxios(err)}
     },
 
     // Lấy toàn bộ thông tin của các key và value (bao gồm nghĩa, phát âm, từ loại,... ) thông qua api
