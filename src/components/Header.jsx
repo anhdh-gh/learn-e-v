@@ -69,31 +69,18 @@ const Header = (props) => {
 
                         : !_.isEmpty(operatorDatasnapshot) && (position?.admin || position?.collaborator) && 
 
-                        <NavDropdown title="Dashboard" className="dashboard-dropdown" active="active">
-
-                            <NavDropdown.Item
-                                style={{cursor: 'pointer'}}
-                                as="span"
-                                href="#"
-                                className="fw-bold"
-                                onClick={() => history.push(ROUTER_PATH.DASHBOARD_USERS)}      
-                            >
-                                <i className="fas fa-user"/> Users
-                            </NavDropdown.Item>
-
-                            <NavDropdown.Divider />
-
-                            <NavDropdown.Item
-                                style={{cursor: 'pointer'}}
-                                as="span"
-                                href="#"
-                                className="fw-bold"
-                                onClick={() => history.push(ROUTER_PATH.DASHBOARD_STUDYSET)}      
-                            >
-                                <i className="fas fa-book-open"/> Study sets
-                            </NavDropdown.Item>
-
-                        </NavDropdown>
+                        <Nav.Link
+                            style={{cursor: 'pointer'}}
+                            as="span"
+                            href="#"
+                            active="active"
+                            onClick={() => history.push(ROUTER_PATH.DASHBOARD_USERS)}                    
+                        >
+                            {pathname.includes('/dashboard/')
+                                ? <Badge pill bg="primary">Dashboard</Badge>
+                                : 'Dashboard'
+                            }
+                        </Nav.Link>
                     }
 
                 </Nav>
