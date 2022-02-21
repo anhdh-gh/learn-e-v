@@ -1,44 +1,49 @@
 import '../assets/styles/Audio.css'
 import { useSpeechSynthesis } from 'react-speech-kit'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { useState, useEffect } from 'react'
 
 const AudioWord = (props) => {
 
     const { word } = props
     const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis()
+    const [audio, setAudio] = useState()
+    const [phonetic, setPhonetic] = useState()
 
-    if (word.info && word.info instanceof Promise) {
-        // Trích xuất audio
-        word.info.then(info => {
-            word.audio = info?.map(info => info.phonetics)
-                .reduce((array, phonetic) => {
-                    array.push(...phonetic)
-                    return array
-                }, [])
-                .map(phoneticItem => phoneticItem.audio)
-                .filter(audio => audio)
-                .reduce((array, audio) => {
-                    if (audio.includes('-us.mp3'))
-                        return [audio].concat(array)
-                    else array.push(audio)
-                    return array
-                }, [])
-                .map(audio => new Audio(audio))
-                .shift()
-        })
+    useEffect(() => {
+        if (word.info && word.info instanceof Promise) {
+            // Trích xuất audio
+            word.info.then(info => {
+                setAudio(info?.map(info => info.phonetics)
+                    .reduce((array, phonetic) => {
+                        array.push(...phonetic)
+                        return array
+                    }, [])
+                    .map(phoneticItem => phoneticItem.audio)
+                    .filter(audio => audio)
+                    .reduce((array, audio) => {
+                        if (audio.includes('-us.mp3'))
+                            return [audio].concat(array)
+                        else array.push(audio)
+                        return array
+                    }, [])
+                    .map(audio => new Audio(audio))
+                    .shift())
+            })
 
-        // Trích xuất phiên âm
-        word.info.then(info => {
-            word.phonetic = info?.map(info => info.phonetics)
-                .reduce((array, phonetic) => {
-                    array.push(...phonetic)
-                    return array
-                }, [])
-                .map(phoneticItem => phoneticItem.text)
-                .filter(phonetic => phonetic)
-                .shift()
-        })
-    }
+            // Trích xuất phiên âm
+            word.info.then(info => {
+                setPhonetic(info?.map(info => info.phonetics)
+                    .reduce((array, phonetic) => {
+                        array.push(...phonetic)
+                        return array
+                    }, [])
+                    .map(phoneticItem => phoneticItem.text)
+                    .filter(phonetic => phonetic)
+                    .shift())
+            })
+        }
+    }, [word])
 
     const filterVoice = (lang) => {
         const voicesFilter = voices.filter(voice => voice.lang.trim().toLowerCase().includes(lang.trim().toLowerCase()))
@@ -48,26 +53,26 @@ const AudioWord = (props) => {
     const handleClickAudio = e => {
         e.stopPropagation()
 
-        if (word.audio)
-            word.audio.play()
+        if (audio)
+            audio.play()
         else
             if (speaking)
                 cancel()
             else
                 speak({
-                    text: word.text, 
-                    voice: word.type === 'key' 
-                    ? filterVoice("en-US")
-                    : filterVoice("vi-VN")
+                    text: word.text,
+                    voice: word.type === 'key'
+                        ? filterVoice("en-US")
+                        : filterVoice("vi-VN")
                 })
     }
 
     return !supported
         ? <></>
-        : <OverlayTrigger placement="bottom" overlay={word.phonetic ? <Tooltip>{word.phonetic}</Tooltip> : <></>}>
+        : <OverlayTrigger placement="bottom" overlay={phonetic ? <Tooltip>{phonetic}</Tooltip> : <></>}>
             <span className={`audio cursor-pointer
                 ${props.className} 
-                ${speaking && 'audio-play'}`} onClick={handleClickAudio}
+                ${(speaking || (audio && audio.ended)) && 'audio-play'}`} onClick={handleClickAudio}
             ><i className="fas fa-volume-up"></i></span>
         </OverlayTrigger>
 }
