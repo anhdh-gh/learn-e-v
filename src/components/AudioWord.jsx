@@ -1,13 +1,11 @@
 import '../assets/styles/Audio.css'
 import { useSpeechSynthesis } from 'react-speech-kit'
-import { useState, useEffect } from 'react'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 const AudioWord = (props) => {
 
     const { word } = props
     const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis()
-    const [ wordAuidoSpeeking, setWordAuidoSpeeking ] = useState(false)
 
     if (word.info && word.info instanceof Promise) {
         // Trích xuất audio
@@ -42,16 +40,6 @@ const AudioWord = (props) => {
         })
     }
 
-    useEffect(() => {
-        if (word.audio)
-            word.audio.addEventListener('ended', () => setWordAuidoSpeeking(false))
-    }, [word.audio])
-
-    useEffect(() => {
-        if (word.audio && wordAuidoSpeeking)
-            word.audio.play()
-    }, [wordAuidoSpeeking, word.audio])
-
     const filterVoice = (lang) => {
         const voicesFilter = voices.filter(voice => voice.lang.trim().toLowerCase().includes(lang.trim().toLowerCase()))
         return voicesFilter && voicesFilter.length > 0 ? voicesFilter[0] : voices[0]
@@ -61,7 +49,7 @@ const AudioWord = (props) => {
         e.stopPropagation()
 
         if (word.audio)
-            setWordAuidoSpeeking(true)
+            word.audio.play()
         else
             if (speaking)
                 cancel()
@@ -79,7 +67,7 @@ const AudioWord = (props) => {
         : <OverlayTrigger placement="bottom" overlay={word.phonetic ? <Tooltip>{word.phonetic}</Tooltip> : <></>}>
             <span className={`audio cursor-pointer
                 ${props.className} 
-                ${(speaking || (word.audio && wordAuidoSpeeking)) && 'audio-play'}`} onClick={handleClickAudio}
+                ${speaking && 'audio-play'}`} onClick={handleClickAudio}
             ><i className="fas fa-volume-up"></i></span>
         </OverlayTrigger>
 }
