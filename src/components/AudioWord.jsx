@@ -72,7 +72,7 @@ const AudioWord = (props) => {
         : <OverlayTrigger placement="bottom" overlay={phonetic ? <Tooltip>{phonetic}</Tooltip> : <></>}>
             <span className={`audio cursor-pointer
                 ${props.className} 
-                ${(speaking || (audio && audio.ended)) && 'audio-play'}`} onClick={handleClickAudio}
+                ${speaking && 'audio-play'}`} onClick={handleClickAudio}
             ><i className="fas fa-volume-up"></i></span>
         </OverlayTrigger>
 }
