@@ -1,7 +1,3 @@
-.TestStudySetPage-container {
-    min-height: 100vh;
-}
-
 .TestStudySetPage-container > .info .title {
     font-weight: 700;
     font-size: 2rem;
@@ -24,6 +20,7 @@
 
 .TestStudySetPage-container > .content {
     background-color: #f6f7fb;
+    min-height: 100vh;
 }
 
 .TestStudySetPage-container > .content > .test {
