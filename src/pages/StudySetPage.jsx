@@ -41,7 +41,7 @@ const StudySetPage = (props) => {
                             />
                         </div>
                         <div className="col-md d-flex align-items-end justify-content-between mt-4 mt-md-0">
-                            <SearchBox placeholder="Search study set" value={search} onChange={e => setSearch(e.target.value)}/>
+                            <SearchBox placeholder="Search" value={search} onChange={e => setSearch(e.target.value)}/>
                             <NavLink to={ROUTER_PATH.STUDY_SET_CREATE}>
                                 <Button style={{height: 'fit-content', fontWeight: 'bold'}}>Create</Button>
                             </NavLink>

@@ -1,11 +1,12 @@
 import '../assets/styles/UserManagementPage.css'
-import { SearchBox, Footer, ModalConfirm, Sider, Pagination } from '../components'
+import { UserInfo, SearchBox, Footer, ModalConfirm, Sider, Pagination } from '../components'
 import { Card, Badge, OverlayTrigger, Tooltip, Offcanvas, Form, Button } from 'react-bootstrap'
 import { useState } from "react"
 import { useList } from 'react-firebase-hooks/database'
 import { Utils, Firebase, Notify } from '../utils'
 import { auth, userDB, rulesDB } from '../config/firebase'
 import { ROUTER_PATH } from '../constants'
+import { NavLink } from "react-router-dom"
 
 const UserManagementPage = (props) => {
 
@@ -61,11 +62,18 @@ const UserManagementPage = (props) => {
                 <div className="func">
                     <div className="container-xl">
                         <div className="row">
-                            <div className="col-sm">
-                                <p className="title mb-2 mb-sm-0 d-block d-sm-inline-block">User management</p>
+                            <div className="col-md">
+                                <UserInfo
+                                    photoURL={auth?.currentUser?.photoURL}
+                                    displayName={auth?.currentUser?.displayName}
+                                    email={auth?.currentUser?.email}
+                                />
                             </div>
-                            <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-sm-0">
-                                <SearchBox placeholder="Search user" value={search} onChange={e => setSearch(e.target.value)} />
+                            <div className="col-md d-flex align-items-end justify-content-between mt-4 mt-md-0">
+                                <SearchBox placeholder="Search" value={search} onChange={e => setSearch(e.target.value)}/>
+                                <NavLink to={ROUTER_PATH.HOME}>
+                                    <Button style={{height: 'fit-content', fontWeight: 'bold'}}>Home</Button>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

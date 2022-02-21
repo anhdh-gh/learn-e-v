@@ -1,10 +1,12 @@
 import '../assets/styles/StudysetManagementPage.css'
-import { Footer, SearchBox, CardStudySet, Sider, Pagination } from '../components'
+import { UserInfo, Footer, SearchBox, CardStudySet, Sider, Pagination } from '../components'
 import { useState } from "react"
 import { Utils } from '../utils'
 import { useList } from 'react-firebase-hooks/database'
-import { userDB, studySetDB } from '../config/firebase'
+import { auth, userDB, studySetDB } from '../config/firebase'
 import { ROUTER_PATH } from '../constants'
+import { NavLink } from "react-router-dom"
+import { Button } from 'react-bootstrap'
 
 const StudysetManagementPage = (props) => {
     const [search, setSearch] = useState('')
@@ -46,11 +48,18 @@ const StudysetManagementPage = (props) => {
                 <div className="func">
                     <div className="container-xl">
                         <div className="row">
-                            <div className="col-sm">
-                                <p className="title mb-2 mb-sm-0 d-block d-sm-inline-block">Study set management</p>
+                            <div className="col-md">
+                                <UserInfo
+                                    photoURL={auth?.currentUser?.photoURL}
+                                    displayName={auth?.currentUser?.displayName}
+                                    email={auth?.currentUser?.email}
+                                />
                             </div>
-                            <div className="col-sm d-sm-flex align-items-end justify-content-end mt-4 mt-sm-0">
-                                <SearchBox placeholder="Search studyset" value={search} onChange={e => setSearch(e.target.value)} />
+                            <div className="col-md d-flex align-items-end justify-content-between mt-4 mt-md-0">
+                                <SearchBox placeholder="Search" value={search} onChange={e => setSearch(e.target.value)}/>
+                                <NavLink to={ROUTER_PATH.HOME}>
+                                    <Button style={{height: 'fit-content', fontWeight: 'bold'}}>Home</Button>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

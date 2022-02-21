@@ -4,15 +4,6 @@
 
 .UserManagementPage-container .func {
     padding: 24px 0;
-    justify-content: space-between;
-}
-
-.UserManagementPage-container .func .title {
-    font-weight: 700;
-    font-size: 1.75rem;
-    margin: 0;
-    border-bottom: .3125rem solid #3ccfcf;
-    display: inline-block;
 }
 
 .UserManagementPage-container .content {
