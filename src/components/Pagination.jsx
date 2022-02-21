@@ -24,7 +24,7 @@ const Pagination = (props) => {
             items.length > numberItem &&
             <RbPagination className="mt-3 justify-content-center">
                 <RbPagination.Prev disabled={currentIndex === 1 || numberIndex === 1} onClick={() => setCurrentIndex(currentIndex - 1)}/>
-                <RbPagination.Item onClick={() => numberIndex === 1 ? setNumberIndex(Math.ceil(items.length/numberItem)) : setNumberIndex(1)}>{numberIndex === 1 ? 'Pagination' : 'All'}</RbPagination.Item>
+                <RbPagination.Item onClick={() => numberIndex === 1 ? setNumberIndex(Math.ceil(items.length/numberItem)) : setNumberIndex(1)}>{numberIndex === 1 ? <i className="fas fa-eye-slash text-danger"></i> : <i className="fas fa-eye text-success"></i>}</RbPagination.Item>
                 <RbPagination.Next disabled={currentIndex === numberIndex || numberIndex === 1} onClick={() => setCurrentIndex(currentIndex + 1)}/>
             </RbPagination>
         }
