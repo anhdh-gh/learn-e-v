@@ -199,11 +199,11 @@ const UserManagementPage = (props) => {
                                 </tr>
                                 <tr className="fw-bold">
                                     <td>Is anonymous</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isAnonymous.toString())}</td>
+                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isAnonymous?.toString())}</td>
                                 </tr>
                                 <tr className="fw-bold">
                                     <td>Is newUser</td>
-                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isNewUser.toString())}</td>
+                                    <td>{Utils.capitalizeFirstLetter(showVEUser?.isNewUser?.toString())}</td>
                                 </tr>
                                 <tr className="fw-bold">
                                     <td>Verified email</td>
