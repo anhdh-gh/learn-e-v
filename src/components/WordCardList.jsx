@@ -4,7 +4,7 @@ import { AudioWord } from '../components'
 const WordCardList = (props) => {
     const { wordCards } = props
 
-    return <div className="wordCards">
+    return <div className={`wordCards ${props?.className}`}>
         <div className="container-xl">
             <h4 className="info">Terms in this set ({wordCards.length})</h4>
             {

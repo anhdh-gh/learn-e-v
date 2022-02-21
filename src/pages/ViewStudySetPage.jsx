@@ -73,7 +73,7 @@ const ViewStudySetPage = (props) => {
                     <div className="description mt-3">{studyset.description}</div>
                 </div>
 
-                <WordCardList wordCards={studyset.wordCards}/>
+                <WordCardList className="min-vh-100" wordCards={studyset.wordCards}/>
             </div>
         </div>
         <Footer/>
