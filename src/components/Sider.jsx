@@ -23,7 +23,7 @@ const Sider = (props) => {
 
     useEffect(()=> {
         window.addEventListener('resize', handleResize)
-        return () => window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
     }, [])
 
     return <>
