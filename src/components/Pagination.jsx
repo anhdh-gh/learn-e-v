@@ -1,5 +1,5 @@
 import { Pagination as RbPagination } from 'react-bootstrap'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const Pagination = (props) => {
 
@@ -7,6 +7,11 @@ const Pagination = (props) => {
     const numberItem  = props.numberItem || 3
     const [ numberIndex, setNumberIndex ] = useState(Math.ceil(items.length/numberItem))
     const [ currentIndex, setCurrentIndex ] = useState(1)
+
+    useEffect(() => {
+        setNumberIndex(Math.ceil(items.length/numberItem))
+    }, [items.length, numberItem])
+
 
     return <div className={props.className}>
         {items.filter((item, index) => {
@@ -18,9 +23,9 @@ const Pagination = (props) => {
         {
             items.length > numberItem &&
             <RbPagination className="mt-3 justify-content-center">
-                <RbPagination.Prev disabled={currentIndex === 1} onClick={() => setCurrentIndex(currentIndex - 1)}/>
+                <RbPagination.Prev disabled={currentIndex === 1 || numberIndex === 1} onClick={() => setCurrentIndex(currentIndex - 1)}/>
                 <RbPagination.Item onClick={() => numberIndex === 1 ? setNumberIndex(Math.ceil(items.length/numberItem)) : setNumberIndex(1)}>{numberIndex === 1 ? 'Pagination' : 'All'}</RbPagination.Item>
-                <RbPagination.Next disabled={currentIndex === numberIndex} onClick={() => setCurrentIndex(currentIndex + 1)}/>
+                <RbPagination.Next disabled={currentIndex === numberIndex || numberIndex === 1} onClick={() => setCurrentIndex(currentIndex + 1)}/>
             </RbPagination>
         }
     </div>
