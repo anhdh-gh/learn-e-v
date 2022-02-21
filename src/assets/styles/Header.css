@@ -13,7 +13,6 @@
     align-items: center;
 }
 
-.dashboard-dropdown > div,
 .user-droplist .header-user-dropList > div {
     box-shadow: 0 4px 12px 0 rgb(0 0 0 / 30%);
     animation: slideZoom 0.5s ease;
@@ -22,10 +21,6 @@
 
 .user-droplist .header-user-dropList > div {
     top: 150%;
-}
-
-.dashboard-dropdown > div {
-    top: 126% !important;
 }
 
 .user-droplist .header-user-title {
