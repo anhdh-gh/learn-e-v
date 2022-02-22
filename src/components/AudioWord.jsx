@@ -7,30 +7,10 @@ const AudioWord = (props) => {
 
     const { word } = props
     const { speak, cancel, speaking, supported, voices } = useSpeechSynthesis()
-    const [audio, setAudio] = useState()
     const [phonetic, setPhonetic] = useState()
 
     useEffect(() => {
         if (word.info && word.info instanceof Promise) {
-            // Trích xuất audio
-            word.info.then(info => {
-                setAudio(info?.map(info => info.phonetics)
-                    .reduce((array, phonetic) => {
-                        array.push(...phonetic)
-                        return array
-                    }, [])
-                    .map(phoneticItem => phoneticItem.audio)
-                    .filter(audio => audio)
-                    .reduce((array, audio) => {
-                        if (audio.includes('-us.mp3'))
-                            return [audio].concat(array)
-                        else array.push(audio)
-                        return array
-                    }, [])
-                    .map(audio => new Audio(audio))
-                    .shift())
-            })
-
             // Trích xuất phiên âm
             word.info.then(info => {
                 setPhonetic(info?.map(info => info.phonetics)
@@ -53,18 +33,15 @@ const AudioWord = (props) => {
     const handleClickAudio = e => {
         e.stopPropagation()
 
-        if (audio)
-            audio.play()
+        if (speaking)
+            cancel()
         else
-            if (speaking)
-                cancel()
-            else
-                speak({
-                    text: word.text,
-                    voice: word.type === 'key'
-                        ? filterVoice("en-US")
-                        : filterVoice("vi-VN")
-                })
+            speak({
+                text: word.text,
+                voice: word.type === 'key'
+                    ? filterVoice("en-US")
+                    : filterVoice("vi-VN")
+            })
     }
 
     return !supported
