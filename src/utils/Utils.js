@@ -76,21 +76,21 @@ const Utils = {
 
     filterUserObject: (userObject) => {
         const {
-            displayName,
-            email,
-            emailVerified,
-            family_name,
-            given_name,
-            isNewUser,
-            locale,
-            phoneNumber,
-            photoURL,
-            uid,
-            verified_email,
-            isAnonymous
+            displayName = '',
+            email = '',
+            emailVerified = '',
+            family_name = '',
+            given_name = '',
+            isNewUser = '',
+            locale = '',
+            phoneNumber = '',
+            photoURL = '',
+            uid = '',
+            verified_email = '',
+            isAnonymous = ''
         } = userObject
 
-        const obj = {
+        return {
             displayName,
             email,
             emailVerified,
@@ -104,10 +104,6 @@ const Utils = {
             verified_email,
             isAnonymous
         }
-
-        Object.keys(obj).forEach(key => obj[key] === undefined ? delete obj[key] : {})
-
-        return obj
     },
 
     convertwordCardsToTest: wordCards => {
@@ -171,7 +167,7 @@ const Utils = {
         array[index2] = temp
     },
 
-    capitalizeFirstLetter: string => string?.charAt(0)?.toUpperCase() + string?.slice(1),
+    capitalizeFirstLetter: string => string && typeof string ? string?.charAt(0)?.toUpperCase() + string?.slice(1) : '',
 }
 
 export default Utils

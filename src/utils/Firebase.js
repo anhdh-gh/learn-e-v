@@ -18,6 +18,7 @@ const Firebase = {
 
     signOut: async () => {
         try {
+            userDB.child(auth.currentUser?.uid).off('value')
             await auth.signOut()
             return true
         }
@@ -36,7 +37,7 @@ const Firebase = {
         }
     },
 
-    removeStudySet: (idStudyset, idAuthor = auth?.currentUser?.uids) => {
+    removeStudySet: (idStudyset, idAuthor = auth?.currentUser?.uid) => {
         try {
             studySetDB.child(idAuthor).child(idStudyset).remove()
             return true
@@ -56,10 +57,11 @@ const Firebase = {
         }
     },
 
-    resetUser: (idUser) => {
+    removeUser: (idUser) => {
         try {
             studySetDB.child(idUser).remove()
-            rulesDB.child(idUser).set({user: true}) 
+            rulesDB.child(idUser).remove()
+            userDB.child(idUser).remove()
             return true
         }
         catch (error) {

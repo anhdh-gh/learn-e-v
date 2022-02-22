@@ -59,7 +59,7 @@ const HomePage = (props) => {
                                                 lengthwordCard={item.wordCards.length}
                                                 showHeader={true}
                                                 photoURL={item.photoURL}
-                                                displayName={item.given_name}
+                                                displayName={item.given_name && item.given_name?.length > 0 ? item.given_name : item.displayName}
                                                 email={item.email}
                                             />
                                         </div>                            

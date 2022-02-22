@@ -105,9 +105,13 @@ const Header = (props) => {
                                         <img src={user?.photoURL} alt='' className="d-sm-block d-none me-2" />
                                         <span>
                                             {
-                                                user?.given_name?.length > 15
+                                                user?.given_name && user?.given_name?.length > 0 
+                                                ? user?.given_name?.length > 15
                                                     ? user?.given_name.substr(0, 15).concat('...')
                                                     : user?.given_name
+                                                : user?.displayName?.length > 15
+                                                        ? user?.displayName.substr(0, 15).concat('...')
+                                                        : user?.displayName
                                             }
                                         </span>
                                     </span>
@@ -116,7 +120,7 @@ const Header = (props) => {
                                     <UserInfo
                                         trim={true}
                                         photoURL={user?.photoURL}
-                                        displayName={user?.given_name}
+                                        displayName={user?.given_name && user?.given_name?.length > 0 ? user?.given_name : user?.displayName}
                                         email={user?.email}
                                     />
                                 </NavDropdown.Item>

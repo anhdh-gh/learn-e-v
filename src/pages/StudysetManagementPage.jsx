@@ -78,7 +78,7 @@ const StudysetManagementPage = (props) => {
                                             description={item.description}
                                             lengthwordCard={item.wordCards.length}
                                             photoURL={item.photoURL}
-                                            displayName={item.given_name}
+                                            displayName={item.given_name && item.given_name?.length > 0 ? item.given_name : item.displayName}
                                             email={item.email}
                                             showFooter={true}
                                             showHeader={true}

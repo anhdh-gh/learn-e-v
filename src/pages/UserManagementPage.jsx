@@ -29,8 +29,8 @@ const UserManagementPage = (props) => {
 
     const myRules = rules[auth?.currentUser?.uid]
 
-    const handleReset = () => {
-        const res = Firebase.resetUser(showModel?.userReset?.id)
+    const handleRemove = () => {
+        const res = Firebase.removeUser(showModel?.userRemove?.id)
         if (res) Notify.success('Successful removal!')
         else Notify.error('Error, try again!')
         setShowModel({ show: false })
@@ -113,11 +113,11 @@ const UserManagementPage = (props) => {
                                                 </Badge>
                                             </OverlayTrigger>
 
-                                            <OverlayTrigger placement="bottom" overlay={<Tooltip>Reset</Tooltip>}>
+                                            <OverlayTrigger placement="bottom" overlay={<Tooltip>Remove</Tooltip>}>
                                                 <Badge bg="danger"
                                                     onClick={() => setShowModel({
                                                         show: true,
-                                                        userReset: { id: user?.uid, displayName: user?.displayName }
+                                                        userRemove: { id: user?.uid, displayName: user?.displayName }
                                                     })}>
                                                     <i className="fas fa-trash-alt fs-6" />
                                                 </Badge>
@@ -135,9 +135,9 @@ const UserManagementPage = (props) => {
                     show={showModel.show}
                     setShow={() => setShowModel({ show: false })}
                     title="Confirm"
-                    message={`Are you sure you want to reset user: "${showModel?.userReset?.displayName}"?`}
+                    message={`Are you sure you want to remove user: "${showModel?.userRemove?.displayName}"?`}
                     handleNo={() => setShowModel({ show: false })}
-                    handleYes={handleReset}
+                    handleYes={handleRemove}
                 />
 
                 {/* Update user */}
