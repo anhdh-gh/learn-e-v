@@ -108,19 +108,33 @@ const Utils = {
 
     convertwordCardsToTest: wordCards => {
         if(wordCards !== undefined) {
+            const uniqueValues = wordCards.map(wordCard => wordCard.value.trim())
+                .filter(value => value)
+                .reduce((arr, currentValue) => {
+                    if (arr.indexOf(currentValue) === -1)
+                        arr.push(currentValue)
+                    return arr
+                }, [])
+
             const numberOfAnswers = (wordCards.length < 4) ? wordCards.length : 4
-            const test = wordCards.map((item, index) => ({
-                id: index,
-                question: item.key,
-                correct: item.value,
+            const test = wordCards.map((wordCard, index) => ({
+                question: wordCard.key,
+                correct: wordCard.value,
                 choice: '',
                 answers: Utils.shuffle([
-                    item.value,
-                    ...Utils.getRandom_K_number_unique(0, wordCards.length-1, numberOfAnswers-1, [index], Utils.getRandomIntInclusive)
-                    .map(item => wordCards[item].value)
+                    wordCard.value,
+                    ...Utils.getRandom_K_number_unique(
+                        0, 
+                        uniqueValues.length < numberOfAnswers ? wordCards.length-1 : uniqueValues.length-1, 
+                        numberOfAnswers-1, 
+                        [uniqueValues.length < numberOfAnswers ? index : uniqueValues.indexOf(wordCard.value)], 
+                        Utils.getRandomIntInclusive
+                    ).map(idx => uniqueValues.length < numberOfAnswers ? wordCards[idx].value : uniqueValues[idx])
                 ]) 
             }))
-            return test            
+
+            // Xáo trộn thứ tự câu
+            return Utils.shuffle(test).map((question, index) => ({id: index, ...question}))            
         }
     },
 
