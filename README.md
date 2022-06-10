@@ -10,7 +10,6 @@
 - JS
 - ReactJS
 - Firebase
-- Redux
 - Bootstrap 5
 - Heroku
 - Vercel
