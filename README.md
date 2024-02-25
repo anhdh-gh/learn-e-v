@@ -1,8 +1,7 @@
 ## Website học từ vựng ngoại ngữ trực tuyến
 
 ## Website
-- https://learn-e-v.vercel.app
-- https://learnev.herokuapp.com
+- https://learne.anhdh.net
 
 ## Công nghệ sử dụng
 - HTML
